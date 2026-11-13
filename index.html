@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-persona="chro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<title>Simon Global Resources Group — J.U.L.E.S. HR-OS™ v4.1 · Enterprise Readiness Edition</title>
+<style>
+:root{
+--bg:#F4F6FA;--bg2:#EAEFF7;--surface:#FFFFFF;--surface2:#F0F4FA;--surface3:#E2E8F3;
+--ink:#0A0F1D;--ink2:#334155;--muted:#64748B;
+--line:rgba(15,23,42,.09);--line2:rgba(15,23,42,.17);
+--crimson:#E11D48;--crimson-s:rgba(225,29,72,.10);
+--orchid:#4F46E5;--orchid-s:rgba(79,70,229,.11);
+--teal:#0D9488;--teal-s:rgba(13,148,136,.11);
+--gold:#D97706;--gold-s:rgba(245,158,11,.12);
+--space:#060913;
+--grad:linear-gradient(135deg,#14B8A6 0%,#4F46E5 50%,#E11D48 100%);
+--font-d:'Space Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+--font-b:'Plus Jakarta Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+--font-m:'JetBrains Mono',ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+--r-xs:6px;--r-sm:10px;--r-md:14px;--r-lg:18px;--r-xl:24px;--pill:999px;
+--shadow:0 18px 45px rgba(10,15,29,.07);--shadow-lg:0 30px 75px rgba(10,15,29,.14);
+--ease:cubic-bezier(.16,1,.3,1);
+}
+[data-theme="dark"]{
+--bg:#060913;--bg2:#0A0F1E;--surface:#0F1629;--surface2:#141E36;--surface3:#1C2847;
+--ink:#F8FAFC;--ink2:#94A3B8;--muted:#64748B;
+--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.15);
+--crimson:#FB7185;--crimson-s:rgba(251,113,133,.13);
+--orchid:#818CF8;--orchid-s:rgba(129,140,248,.14);
+--teal:#2DD4BF;--teal-s:rgba(45,212,191,.13);
+--gold:#FBBF24;--gold-s:rgba(251,191,36,.14);
+--shadow:0 24px 60px rgba(0,0,0,.55);--shadow-lg:0 40px 100px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-b);font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+background-image:radial-gradient(circle at 12% 6%,rgba(45,212,191,.10),transparent 38%),radial-gradient(circle at 86% 12%,rgba(99,102,241,.12),transparent 42%),radial-gradient(circle at 50% 62%,rgba(244,63,94,.05),transparent 48%);background-attachment:fixed}
+::selection{background:rgba(45,212,191,.3);color:#fff}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--font-m)}
+.wrap{max-width:1300px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 18px}}
+section{padding:88px 0;position:relative;border-bottom:1px solid var(--line)}
+@media(max-width:768px){section{padding:60px 0}}
+.grid-bg{background-image:radial-gradient(rgba(148,163,184,.13) 1px,transparent 1px);background-size:26px 26px}
+h1,h2,h3,h4{font-family:var(--font-d);font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+.dxl{font-family:var(--font-d);font-size:clamp(34px,4.8vw,62px);line-height:1.05;letter-spacing:-.035em;font-weight:700}
+.dxl em,.stitle em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stitle{font-family:var(--font-d);font-size:clamp(26px,3.3vw,40px);line-height:1.12;letter-spacing:-.028em;margin-bottom:12px;font-weight:700}
+.lead{color:var(--ink2);font-size:16px;line-height:1.65;max-width:70ch}
+.eyebrow{font-family:var(--font-m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:inline-flex;align-items:center;gap:8px;padding:5px 13px;border-radius:var(--pill);background:var(--teal-s);border:1px solid color-mix(in srgb,var(--teal) 35%,transparent)}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-m);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;padding:4px 10px;border-radius:var(--pill);border:1px solid var(--line2);color:var(--ink2);background:var(--surface2);font-weight:500}
+.chip.t{color:var(--teal);border-color:color-mix(in srgb,var(--teal) 40%,transparent);background:var(--teal-s)}
+.chip.c{color:var(--crimson);border-color:color-mix(in srgb,var(--crimson) 45%,transparent);background:var(--crimson-s)}
+.chip.g{color:var(--gold);border-color:color-mix(in srgb,var(--gold) 40%,transparent);background:var(--gold-s)}
+.chip.o{color:var(--orchid);border-color:color-mix(in srgb,var(--orchid) 45%,transparent);background:var(--orchid-s)}
+.tier{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;padding:2px 7px;border-radius:4px;border:1px dashed var(--line2);color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.tier.t1{color:var(--gold);border-color:color-mix(in srgb,var(--gold) 50%,transparent)}
+.tier.t2{color:var(--orchid);border-color:color-mix(in srgb,var(--orchid) 50%,transparent)}
+.tier.t3{color:var(--teal);border-color:color-mix(in srgb,var(--teal) 50%,transparent)}
+.tier.t4{color:var(--teal);border-style:solid;border-color:var(--teal);background:var(--teal-s)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-b);font-weight:600;font-size:13px;padding:11px 20px;border-radius:var(--r-sm);border:1px solid transparent;cursor:pointer;transition:all .22s var(--ease);white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.btn-pri{color:#fff;background:linear-gradient(135deg,#0D9488,#4F46E5);border-color:rgba(255,255,255,.18);box-shadow:0 10px 26px rgba(79,70,229,.32)}
+.btn-pri:hover{box-shadow:0 14px 32px rgba(79,70,229,.48);filter:brightness(1.07)}
+.btn-ghost{color:var(--ink);border-color:var(--line2);background:color-mix(in srgb,var(--surface) 88%,transparent)}
+.btn-ghost:hover{border-color:var(--teal);background:var(--surface2)}
+.btn-sm{padding:8px 13px;font-size:11.5px}
+.btn-danger{color:#fff;background:var(--crimson);border-color:transparent}
+.card{position:relative;background:var(--surface);border:1px solid var(--line2);border-radius:var(--r-lg);padding:24px;box-shadow:var(--shadow)}
+.formula{font-family:var(--font-m);font-size:11.5px;background:var(--teal-s);border-left:3px solid var(--teal);padding:10px 13px;border-radius:var(--r-xs);margin-top:12px;color:var(--ink);overflow-x:auto}
+.formula.warn{background:var(--crimson-s);border-left-color:var(--crimson)}
+.formula.gold{background:var(--gold-s);border-left-color:var(--gold)}
+.code{font-family:var(--font-m);font-size:11.5px;background:var(--space);color:#E6ECF5;padding:16px;border-radius:var(--r-md);border:1px solid var(--line2);line-height:1.65;overflow-x:auto;white-space:pre}
+.topbar{background:linear-gradient(90deg,rgba(45,212,191,.14),rgba(99,102,241,.15),rgba(244,63,94,.12));border-bottom:1px solid var(--line);padding:9px 20px;font-family:var(--font-m);font-size:10.5px;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;text-align:center}
+.topbar .badge{background:var(--teal);color:#060913;padding:2px 9px;border-radius:var(--pill);font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(20px);background:color-mix(in srgb,var(--bg) 86%,transparent);border-bottom:1px solid var(--line)}
+.nav .w{display:flex;align-items:center;gap:14px;min-height:70px;max-width:1300px;margin:0 auto;padding:8px 32px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px;line-height:1.15}
+.brand svg{width:36px;height:36px;flex-shrink:0}
+.brand .nm{font-family:var(--font-d);font-weight:700;font-size:14.5px;display:block}
+.brand small{display:block;font-family:var(--font-m);font-size:8.5px;letter-spacing:.13em;color:var(--teal);text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;gap:1px;margin-left:6px;flex-wrap:wrap}
+.nav-links a{font-size:12.5px;font-weight:600;color:var(--ink2);padding:6px 9px;border-radius:var(--r-xs)}
+.nav-links a:hover{color:var(--ink);background:var(--surface2)}
+.nav .rt{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.persona-sw{display:inline-flex;padding:3px;background:var(--surface2);border:1px solid var(--line2);border-radius:var(--pill);gap:2px}
+.persona-sw button{font-family:var(--font-m);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 11px;border-radius:var(--pill);border:0;background:transparent;color:var(--ink2);cursor:pointer;transition:.2s;white-space:nowrap}
+.persona-sw button.on{background:linear-gradient(135deg,#0D9488,#4F46E5);color:#fff;font-weight:700}
+.utc{font-family:var(--font-m);font-size:9.5px;color:var(--ink2);padding:5px 11px;border-radius:var(--pill);border:1px solid var(--line2);background:var(--surface);display:flex;align-items:center;gap:6px}
+.utc i{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 9px var(--teal);animation:pd 2s infinite;display:inline-block}
+@keyframes pd{0%,100%{opacity:1}50%{opacity:.3}}
+@media(max-width:1180px){.nav-links{display:none}}
+@media(max-width:700px){.utc{display:none}.nav .w{padding:8px 18px}}
+.hero{padding:56px 0 54px;overflow:hidden}
+.hero-top{display:grid;grid-template-columns:1.12fr .88fr;gap:38px;align-items:start;margin-bottom:34px}
+@media(max-width:980px){.hero-top{grid-template-columns:1fr}}
+.meta-row{display:flex;align-items:center;gap:7px;margin-bottom:18px;flex-wrap:wrap}
+.cta-row{display:flex;gap:11px;flex-wrap:wrap;margin-top:22px}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+@media(max-width:640px){.hstats{grid-template-columns:repeat(2,1fr)}}
+.hstat b{font-family:var(--font-d);font-size:24px;display:block;line-height:1.1}
+.hstat span{font-family:var(--font-m);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;display:block;margin-top:2px}
+.viz{position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--space);box-shadow:0 0 60px rgba(45,212,191,.15),var(--shadow-lg);border:1px solid color-mix(in srgb,var(--teal) 38%,transparent);aspect-ratio:4/3.4;min-height:340px}
+.viz canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.hud{position:absolute;top:13px;left:13px;right:13px;font-family:var(--font-m);font-size:9.5px;color:#F8FAFC;background:rgba(6,9,19,.84);border:1px solid rgba(45,212,191,.45);padding:6px 11px;border-radius:var(--pill);pointer-events:none}
+.vcap{position:absolute;left:14px;bottom:12px;right:14px;display:flex;justify-content:space-between;gap:10px;font-family:var(--font-m);font-size:9px;letter-spacing:.09em;color:rgba(248,250,252,.66);text-transform:uppercase;pointer-events:none}
+.focus-panel{border:1px solid var(--line2);border-left:4px solid var(--teal);border-radius:var(--r-md);background:var(--surface);padding:18px 20px;margin-bottom:26px}
+.focus-panel h4{font-size:15px;margin-bottom:6px}
+.focus-links{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.focus-links a{font-family:var(--font-m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--pill);border:1px solid var(--line2);background:var(--surface2);color:var(--ink2)}
+.focus-links a:hover{border-color:var(--teal);color:var(--teal)}
+.ribbon{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.ribbon{grid-template-columns:1fr}}
+.rt-card{background:var(--surface);border:1px solid var(--line2);border-radius:var(--r-md);padding:18px;position:relative;overflow:hidden}
+.rt-card::before{content:"";position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--grad)}
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;background:color-mix(in srgb,var(--surface) 72%,transparent)}
+.trust .in{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between}
+.trust .lb{font-family:var(--font-m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.trust .lg{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-family:var(--font-m);font-size:10.5px;letter-spacing:.08em;color:var(--ink2)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:1024px){.g3,.g4,.g5{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.g2{grid-template-columns:1fr}}
+@media(max-width:600px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.att{background:var(--surface);border:1px solid var(--line2);border-radius:var(--r-md);padding:18px;cursor:pointer;transition:.2s var(--ease);position:relative}
+.att:hover,.att.on{border-color:var(--teal);transform:translateY(-3px);box-shadow:var(--shadow)}
+.att .code-l{font-family:var(--font-m);font-size:9.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.att h4{font-size:15px;margin:7px 0 8px}
+.att p{font-size:12.5px;color:var(--ink2);line-height:1.5}
+.att-detail{margin-top:18px;border:1px solid var(--line2);border-left:4px solid var(--orchid);border-radius:var(--r-lg);background:var(--surface);padding:24px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:8px 14px;font-size:13px;margin-top:12px}
+@media(max-width:640px){.kv{grid-template-columns:1fr}}
+.kv dt{font-family:var(--font-m);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.kv dd{color:var(--ink2)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+@media(max-width:1024px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.pillars{grid-template-columns:1fr}}
+.pc{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line2);border-radius:var(--r-lg);padding:24px 22px;position:relative;overflow:hidden;transition:.25s var(--ease);display:flex;flex-direction:column;justify-content:space-between}
+.pc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:.85}
+.pc:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 20px 42px rgba(13,148,136,.14)}
+.pc .nt{font-family:var(--font-m);font-size:9.5px;color:var(--muted);letter-spacing:.11em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pc h3{font-size:19px;margin-bottom:9px}
+.pc p{font-size:13.3px;color:var(--ink2);line-height:1.58}
+.kpi-strip{margin-top:13px;padding-top:11px;border-top:1px dashed var(--line2);display:flex;justify-content:space-between;gap:10px;font-family:var(--font-m);font-size:10px;flex-wrap:wrap}
+.roi{margin-top:32px;background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--line2);border-radius:var(--r-lg);padding:26px;display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:start;box-shadow:var(--shadow)}
+@media(max-width:900px){.roi{grid-template-columns:1fr}}
+.cg{margin-bottom:14px}
+.cg label{display:flex;justify-content:space-between;gap:10px;font-family:var(--font-m);font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink2);margin-bottom:6px}
+.cg select,.cg input[type=text],.cg input[type=number],.cg textarea{width:100%;padding:10px 12px;border-radius:var(--r-sm);border:1px solid var(--line2);background:var(--surface2);color:var(--ink);font-family:var(--font-b);font-size:13.3px}
+.cg textarea{font-family:var(--font-m);font-size:12px;line-height:1.6;resize:vertical}
+.cg input[type=range]{width:100%;accent-color:var(--teal)}
+.ob{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px}
+.ob .k{font-family:var(--font-m);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.ob .v{font-family:var(--font-d);font-size:26px;margin-top:3px;line-height:1.1}
+.seg{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.seg button{font-family:var(--font-m);font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:7px 13px;border-radius:var(--pill);border:1px solid var(--line2);background:var(--surface);color:var(--ink2);cursor:pointer;transition:.2s}
+.seg button.on{background:var(--teal);color:#060913;border-color:var(--teal);font-weight:700}
+.lab-p{display:none}.lab-p.on{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.lab-p.on{grid-template-columns:1fr}}
+.gauge{height:12px;background:var(--surface3);border-radius:var(--pill);overflow:hidden;position:relative;margin-top:8px}
+.gauge i{display:block;height:100%;border-radius:var(--pill);background:var(--grad);transition:width .5s var(--ease)}
+.gauge i.hot{background:linear-gradient(90deg,#F59E0B,#E11D48)}
+.mi-row{display:grid;grid-template-columns:1fr 74px;gap:10px;align-items:center;font-family:var(--font-m);font-size:11px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.mi-bar{height:7px;background:var(--surface3);border-radius:var(--pill);overflow:hidden;margin-top:4px}
+.mi-bar i{display:block;height:100%;background:var(--crimson);transition:width .4s var(--ease)}
+.mi-bar i.clean{background:var(--teal)}
+.mf-item{display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface2);margin-bottom:8px}
+.mf-item .sig{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;font-family:var(--font-m);font-size:12px;font-weight:700;flex-shrink:0}
+.mf-item.ok .sig{background:var(--teal-s);color:var(--teal);border:1px solid color-mix(in srgb,var(--teal) 40%,transparent)}
+.mf-item.no .sig{background:var(--crimson-s);color:var(--crimson);border:1px solid color-mix(in srgb,var(--crimson) 40%,transparent)}
+.mf-item b{font-size:13.5px;display:block}
+.mf-item span{font-size:11.5px;color:var(--muted);font-family:var(--font-m);display:block;margin-top:3px;line-height:1.5}
+.sw{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-family:var(--font-m);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.sw .track{width:40px;height:22px;border-radius:var(--pill);background:var(--surface3);border:1px solid var(--line2);position:relative;transition:.2s;flex-shrink:0}
+.sw .track::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:.2s var(--ease)}
+.sw input:checked+.track{background:var(--teal-s);border-color:var(--teal)}
+.sw input:checked+.track::after{left:20px;background:var(--teal)}
+.sw input:focus-visible+.track{outline:2px solid var(--teal);outline-offset:2px}
+.oracle{display:grid;grid-template-columns:380px 1fr;gap:20px;align-items:stretch;margin-top:28px}
+@media(max-width:980px){.oracle{grid-template-columns:1fr}}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+@media(max-width:600px){.readout{grid-template-columns:repeat(2,1fr)}}
+.dash{border:1px solid var(--line2);border-radius:var(--r-lg);overflow:hidden;background:var(--surface);box-shadow:var(--shadow-lg);margin-top:28px}
+.dash-top{display:flex;align-items:center;gap:9px;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--surface2);flex-wrap:wrap}
+.dash-top .dot{width:9px;height:9px;border-radius:50%}
+.tiles{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line)}
+@media(max-width:1024px){.tiles{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:640px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--surface);padding:16px 14px;cursor:pointer;transition:background .2s}
+.tile:hover,.tile.on{background:var(--surface2)}
+.tile.on{box-shadow:inset 0 -3px 0 var(--teal)}
+.tile .k{font-family:var(--font-m);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.tile .v{font-family:var(--font-d);font-size:25px;margin-top:5px;line-height:1}
+.tile .d{font-family:var(--font-m);font-size:9.5px;margin-top:5px}
+.up{color:var(--teal)}.dn{color:var(--crimson)}
+.dash-body{display:grid;grid-template-columns:1.3fr 1.1fr;gap:1px;background:var(--line)}
+@media(max-width:900px){.dash-body{grid-template-columns:1fr}}
+.dash-body>div{background:var(--surface);padding:22px}
+table.dt{width:100%;border-collapse:collapse;font-size:12.5px}
+.dt th{font-family:var(--font-m);font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);text-align:left;padding:8px 7px;border-bottom:1px solid var(--line)}
+.dt td{padding:10px 7px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top}
+.dt tr.click{cursor:pointer}.dt tr.click:hover{background:var(--surface2)}
+.dt td.num{font-family:var(--font-m);text-align:right;color:var(--ink)}
+.cmp-wrap{overflow-x:auto;border:1px solid var(--line2);border-radius:var(--r-lg);background:var(--surface);margin-top:26px}
+table.cmp{width:100%;border-collapse:collapse;font-size:12.5px;min-width:820px}
+.cmp th{font-family:var(--font-m);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:14px 14px;border-bottom:1px solid var(--line2);background:var(--surface2);vertical-align:bottom}
+.cmp th.us{color:var(--teal)}
+.cmp td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top}
+.cmp td:first-child{color:var(--ink);font-weight:600;font-size:12.8px}
+.cmp tr:last-child td{border-bottom:0}
+.cmp .yes{color:var(--teal);font-weight:600}
+.cmp .part{color:var(--gold)}
+.cmp .no{color:var(--muted)}
+.hg-panel{display:grid;grid-template-columns:1fr 350px;gap:20px;margin-top:28px}
+@media(max-width:920px){.hg-panel{grid-template-columns:1fr}}
+.hg-cv{width:100%;height:390px;border-radius:var(--r-lg);background:var(--space);display:block;border:1px solid var(--line2);cursor:pointer}
+.sdk{background:#060913;border:1px solid var(--line2);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg);display:flex;flex-direction:column}
+.sdk-h{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:#0B1022;border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:wrap;gap:9px}
+.sdk-tabs{display:flex;gap:5px;flex-wrap:wrap}
+.sdk-tab{font-family:var(--font-m);font-size:10.5px;padding:6px 11px;border-radius:var(--r-xs);border:1px solid transparent;background:transparent;color:#94A3B8;cursor:pointer;transition:.2s}
+.sdk-tab:hover{color:#fff;background:rgba(255,255,255,.05)}
+.sdk-tab.on{background:rgba(45,212,191,.13);color:#2DD4BF;border-color:rgba(45,212,191,.4)}
+.sdk-pre{font-family:var(--font-m);font-size:11.8px;line-height:1.66;color:#E2E8F0;padding:20px;overflow-x:auto;margin:0;flex:1;white-space:pre}
+.sdk-f{padding:11px 16px;background:#0B1022;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--font-m);font-size:10.5px;color:#94A3B8;flex-wrap:wrap}
+.dom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:26px}
+@media(max-width:960px){.dom-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.dom-grid{grid-template-columns:1fr}}
+.dom{border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);padding:16px;cursor:pointer;transition:.2s var(--ease)}
+.dom:hover,.dom.on{border-color:var(--teal);transform:translateY(-2px);background:var(--surface2);box-shadow:0 12px 30px rgba(13,148,136,.13)}
+.dom .n{font-family:var(--font-m);font-size:9.5px;color:var(--teal);letter-spacing:.13em}
+.dom b{font-family:var(--font-d);font-size:14px;display:block;margin:5px 0}
+.dom span{font-size:12px;color:var(--muted);line-height:1.48;display:block}
+.drawer{margin-top:18px;border:1px solid var(--line2);border-left:4px solid var(--teal);border-radius:var(--r-lg);background:var(--surface);padding:24px;display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:start}
+@media(max-width:820px){.drawer{grid-template-columns:1fr}}
+.lab-block{border:1px solid var(--line2);border-radius:var(--r-lg);background:var(--surface);padding:24px;margin-top:18px;position:relative;overflow:hidden}
+.lab-block::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:.7}
+.lab-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.lab-h h3{font-size:19px}
+.steps{font-family:var(--font-m);font-size:11px;line-height:1.9;color:var(--ink2);background:var(--space);color:#CBD5E1;padding:14px;border-radius:var(--r-sm);border:1px solid var(--line2);margin-top:12px;max-height:190px;overflow-y:auto;white-space:pre-wrap}
+.steps .ok{color:#2DD4BF}.steps .bad{color:#FB7185}.steps .dim{color:#64748B}.steps .warn{color:#FBBF24}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+@media(max-width:760px){.flow{grid-template-columns:1fr}}
+.fnode{border:1px solid var(--line2);border-radius:var(--r-sm);background:var(--surface2);padding:14px;font-size:12.5px}
+.fnode b{font-family:var(--font-m);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:6px}
+.fnode.dead{opacity:.5;border-style:dashed}
+.fnode.dead b{color:var(--crimson)}
+.bars{margin-top:14px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 62px;gap:10px;align-items:center;font-family:var(--font-m);font-size:11px;padding:6px 0}
+@media(max-width:600px){.bar-row{grid-template-columns:110px 1fr 54px}}
+.bar-tr{height:9px;background:var(--surface3);border-radius:var(--pill);overflow:hidden;position:relative}
+.bar-tr i{display:block;height:100%;background:var(--teal);transition:width .5s var(--ease)}
+.bar-tr i.bad{background:var(--crimson)}
+.bar-tr .thr{position:absolute;top:-3px;bottom:-3px;left:80%;width:2px;background:var(--gold)}
+.vision{background:linear-gradient(135deg,rgba(13,148,136,.10),rgba(79,70,229,.12),var(--surface));border:1px solid var(--line2);border-radius:var(--r-xl);padding:42px;box-shadow:var(--shadow)}
+@media(max-width:640px){.vision{padding:26px}}
+.vq{font-family:var(--font-d);font-size:clamp(19px,2.4vw,29px);line-height:1.34;max-width:46ch;margin-bottom:22px;font-weight:600}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(6,9,19,.8);backdrop-filter:blur(8px);display:none;place-items:center;padding:20px}
+.modal.on{display:grid}
+.modal-c{max-width:720px;width:100%;max-height:86vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line2);border-radius:var(--r-lg);padding:30px;box-shadow:var(--shadow-lg)}
+footer{border-top:1px solid var(--line);padding:56px 0 40px;background:var(--bg2)}
+footer .cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px}
+@media(max-width:900px){footer .cols{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){footer .cols{grid-template-columns:1fr}}
+footer h4{font-family:var(--font-m);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+footer a{display:block;font-size:13px;color:var(--ink2);padding:3px 0;cursor:pointer}
+footer a:hover{color:var(--teal)}
+.legal{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--font-m);font-size:10.5px;color:var(--muted);line-height:1.85;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.rv{opacity:0;transform:translateY(15px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.aud-flag{display:none;font-family:var(--font-m);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);background:var(--teal-s);border-radius:4px;padding:2px 6px;margin-left:8px;vertical-align:middle}
+[data-persona="chro"] [data-aud="chro"]>.aud-flag,[data-persona="ciso"] [data-aud="ciso"]>.aud-flag{display:inline-block}
+[data-persona="chro"] [data-aud="chro"],[data-persona="ciso"] [data-aud="ciso"]{box-shadow:0 0 0 1px color-mix(in srgb,var(--teal) 55%,transparent),var(--shadow)}
+[data-persona="chro"] [data-aud="ciso"],[data-persona="ciso"] [data-aud="chro"]{opacity:.74}
+[data-persona="chro"] [data-aud="ciso"]:hover,[data-persona="ciso"] [data-aud="chro"]:hover{opacity:1}
+.note{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:12px;font-style:italic}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<span class="badge">v4.1 Enterprise Readiness</span>
+<span><b>Simon Global Resources Group</b> · J.U.L.E.S. HR-OS™ — every quantitative claim on this page is now tagged with an evidence tier. Simulation benchmarks are labelled as such.</span>
+<a href="#attest" style="color:var(--teal);text-decoration:underline">Open attestation register →</a>
+</div>
+
+<nav class="nav"><div class="w">
+<a class="brand" href="#top" aria-label="Simon Global Resources Group home">
+<svg viewBox="0 0 240 240" aria-hidden="true"><use href="#mark"/></svg>
+<span><span class="nm">Simon Global Resources Group</span><small>J.U.L.E.S. HR-OS™ v4.1 · AperX</small></span>
+</a>
+<div class="nav-links">
+<a href="#attest">Assurance</a><a href="#pillars">HR Suite</a><a href="#lab">Privacy Lab</a>
+<a href="#manifest">Works Council</a><a href="#twin">Retention Twin</a><a href="#connect">HiTL Write-Back</a>
+<a href="#frontier">R&amp;D Frontier</a><a href="#compete">Buyer Fit</a>
+</div>
+<div class="rt">
+<div class="persona-sw" role="group" aria-label="Audience view">
+<button id="pChro" class="on" aria-pressed="true">CHRO &amp; Talent</button>
+<button id="pCiso" aria-pressed="false">CISO · Legal · WC</button>
+</div>
+<div class="utc"><i></i><span id="clock">SGRG · UTC</span></div>
+<button class="btn btn-ghost btn-sm" id="refBtn">Refs</button>
+<button class="btn btn-ghost btn-sm" id="themeBtn">Theme</button>
+<a class="btn btn-pri btn-sm" href="#contact">Request diligence pack</a>
+</div>
+</div></nav>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="mark" viewBox="0 0 240 240">
+<defs>
+<radialGradient id="nuc" cx="0.36" cy="0.32" r="0.95"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.4" stop-color="#2DD4BF"/><stop offset="1" stop-color="#4F46E5"/></radialGradient>
+<linearGradient id="orb" gradientUnits="userSpaceOnUse" x1="25" y1="25" x2="215" y2="215"><stop offset="0" stop-color="#2DD4BF"/><stop offset="0.5" stop-color="#6366F1"/><stop offset="0.85" stop-color="#F43F5E"/><stop offset="1" stop-color="#FBBF24"/></linearGradient>
+</defs>
+<circle cx="120" cy="120" r="106" fill="rgba(45,212,191,0.06)" stroke="url(#orb)" stroke-width="2.5"/>
+<polygon points="120,22 205,71 205,169 120,218 35,169 35,71" fill="none" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.4" stroke-dasharray="4 4"/>
+<g fill="none" stroke="url(#orb)" stroke-width="1.7" stroke-dasharray="6 4" opacity="0.9"><ellipse cx="120" cy="120" rx="92" ry="38"/><ellipse cx="120" cy="120" rx="92" ry="38" transform="rotate(60 120 120)"/><ellipse cx="120" cy="120" rx="92" ry="38" transform="rotate(120 120 120)"/></g>
+<circle cx="212" cy="120" r="8" fill="#2DD4BF"/><circle cx="28" cy="120" r="7" fill="#6366F1"/>
+<g transform="rotate(60 120 120)"><circle cx="212" cy="120" r="8" fill="#F43F5E"/><circle cx="28" cy="120" r="7" fill="#FBBF24"/></g>
+<circle cx="120" cy="120" r="24" fill="url(#nuc)" stroke="#2DD4BF" stroke-width="2"/><circle cx="120" cy="120" r="6" fill="#FFF"/>
+</symbol>
+</svg>
+
+<!-- ============ HERO ============ -->
+<header class="hero grid-bg" id="top"><div class="wrap">
+<div class="hero-top">
+<div class="rv in">
+<div class="meta-row">
+<span class="chip t">AI/HR Startup · Seed Stage</span>
+<span class="chip o">v4.1 Enterprise Readiness</span>
+<span class="chip g">Evidence-Tiered Claims</span>
+</div>
+<h1 class="dxl">Workforce intelligence that can survive <em>a CISO review and a Works Council vote.</em></h1>
+<p class="lead" style="margin-top:18px">
+J.U.L.E.S. HR-OS™ is a governed people-analytics control plane built on the <b>AperX epistemic hyperledger</b>. We are a seed-stage, research-first company — so we do not ask you to trust a logo wall. We ask you to inspect the causal assumptions, the privacy budget, the proxy-leakage diagnostics, and the cryptographic sign-off path. Everything below is interactive and everything is tiered by evidence strength.
+</p>
+<div class="cta-row">
+<a class="btn btn-pri" href="#attest">Open verification &amp; attestation register</a>
+<a class="btn btn-ghost" href="#frontier">R&amp;D frontier lab preview</a>
+<a class="btn btn-ghost" href="#compete">When <i>not</i> to buy us</a>
+</div>
+<div class="hstats">
+<div class="hstat"><b>Γ 1.85</b><span>Rosenbaum robustness (rich regime)</span><span class="tier t1">Tier 1 · simulation</span></div>
+<div class="hstat"><b>&lt;0.012</b><span>Proxy mutual information</span><span class="tier t1">Tier 1 · simulation</span></div>
+<div class="hstat"><b>ε 0.85</b><span>Quarterly DP budget of 1.00</span><span class="tier t2">Tier 2 · implemented</span></div>
+<div class="hstat"><b>0</b><span>Automated adverse actions</span><span class="tier t3">Tier 3 · architectural invariant</span></div>
+</div>
+<p class="note">Removed from v4.0: unqualified “−43% attrition”, “+38% mobility”, “91% faster” headline claims. Those figures originated in controlled synthetic benchmarks and are now presented only inside the tiered evidence register with their generation conditions.</p>
+</div>
+<div>
+<div class="viz rv in">
+<canvas id="radar" aria-label="Interactive workforce telemetry field"></canvas>
+<div class="hud" id="radarHud">HR TELEMETRY FIELD · 6 GOVERNED VECTORS · HOVER TO INSPECT</div>
+<div class="vcap"><span>Fig. 01 · Governance topology</span><span>Π / N on hover</span></div>
+</div>
+<div class="focus-panel rv" style="margin-top:18px" id="focusPanel">
+<h4 id="focusTitle">Your view: CHRO &amp; Talent Strategy</h4>
+<p style="font-size:13px;color:var(--ink2)" id="focusBody">Emphasis on retention economics, internal mobility yield, pay-equity calibration, and time-to-fill. Security and legal controls remain fully visible below — they are simply de-emphasised, never hidden.</p>
+<div class="focus-links" id="focusLinks"></div>
+</div>
+</div>
+</div>
+
+<div class="ribbon rv in">
+<div class="rt-card" data-aud="chro"><span class="aud-flag">focus</span><div class="mono" style="font-size:9.5px;color:var(--teal);letter-spacing:.11em;text-transform:uppercase">Layer 01 · Core HR</div><h4 style="font-size:16px;margin:6px 0">Talent, Rewards &amp; People Ops</h4><p style="font-size:12.8px;color:var(--ink2)">Two-stage CV debiasing, pay-equity calibration, cold-start-capable retention twin, k-anonymous employee listening.</p></div>
+<div class="rt-card" data-aud="both"><div class="mono" style="font-size:9.5px;color:var(--orchid);letter-spacing:.11em;text-transform:uppercase">Layer 02 · Governance</div><h4 style="font-size:16px;margin:6px 0">Bonded HiTL &amp; Write-Back</h4><p style="font-size:12.8px;color:var(--ink2)">No recommendation executes without an Ed25519-signed HRBP approval bound to an AperX commitment hash.</p></div>
+<div class="rt-card" data-aud="ciso"><span class="aud-flag">focus</span><div class="mono" style="font-size:9.5px;color:var(--gold);letter-spacing:.11em;text-transform:uppercase">Layer 03 · Assurance</div><h4 style="font-size:16px;margin:6px 0">Attestation, DP &amp; Erasure</h4><p style="font-size:12.8px;color:var(--ink2)">SOC 2 / ISO readiness, (ε,δ)-DP accounting, HSM salt-shredding, TEE joins, ZK fairness receipts.</p></div>
+</div>
+</div></header>
+
+<div class="trust"><div class="wrap in">
+<span class="lb">Bidirectional adapters · read + governed write-back //</span>
+<div class="lg"><span>WORKDAY HCM</span><span>·</span><span>SAP SUCCESSFACTORS</span><span>·</span><span>GREENHOUSE / LEVER</span><span>·</span><span>ADP / RIPPLING</span><span>·</span><span>SNOWFLAKE / POWER BI DAX</span><span>·</span><span>SLACK / TEAMS APPROVALS</span></div>
+</div></div>
+
+<!-- ============ 01 ATTESTATION ============ -->
+<section id="attest" class="grid-bg"><div class="wrap">
+<div class="rv" data-aud="ciso"><span class="aud-flag">focus</span>
+<div class="eyebrow">01 // Verification &amp; Compliance Attestation Drawer</div>
+<h2 class="stitle">We are seed-stage. Here is exactly <em>what is attested and what is not.</em></h2>
+<p class="lead">A startup cannot honestly claim a completed SOC 2 Type II observation window on day one. This register separates <b>implemented controls</b>, <b>audit-ready artefacts</b>, and <b>third-party attestations</b>, and states the residual gap and owner for each. Click any card to open its evidence detail.</p>
+</div>
+
+<div class="card rv" style="margin-top:26px" data-aud="both">
+<div class="lab-h"><h3 style="font-size:17px">Evidence tier legend</h3><span class="chip o">Applies to every number on this page</span></div>
+<div class="g4" style="margin-top:6px">
+<div><span class="tier t1">Tier 1</span><p style="font-size:12.5px;color:var(--ink2);margin-top:7px"><b>Controlled simulation.</b> Synthetic workforce generator, fixed seed, published parameters. No client data. Not a forecast.</p></div>
+<div><span class="tier t2">Tier 2</span><p style="font-size:12.5px;color:var(--ink2);margin-top:7px"><b>Implemented &amp; internally backtested.</b> Code path exists and is exercised on public or synthetic corpora out-of-time.</p></div>
+<div><span class="tier t3">Tier 3</span><p style="font-size:12.5px;color:var(--ink2);margin-top:7px"><b>Client out-of-time pilot.</b> Backtest on a customer's own historical hold-out under NDA. Available on request; not yet published.</p></div>
+<div><span class="tier t4">Tier 4</span><p style="font-size:12.5px;color:var(--ink2);margin-top:7px"><b>Third-party attested.</b> Signed by an independent auditor or accredited body. Currently limited — see gaps below.</p></div>
+</div>
+<div class="seg" style="margin-top:18px;margin-bottom:0">
+<button id="attAll" class="on">Show all readiness items</button>
+<button id="attT4">Show only Tier 4 (third-party attested)</button>
+</div>
+<p class="note" id="attFilterNote" style="display:none">Honest result: <b>zero items are currently Tier 4.</b> Our SOC 2 Type II observation window and NYC Local Law 144 independent bias audit are scheduled, not complete. We would rather show you this empty state than imply a certification we do not hold.</p>
+</div>
+
+<div class="g5 rv" style="margin-top:22px" id="attGrid"></div>
+<div class="att-detail rv" id="attDetail"></div>
+</div></section>
+
+<!-- ============ 02 PILLARS + ROI ============ -->
+<section id="pillars" style="background:var(--bg2)"><div class="wrap">
+<div class="rv" data-aud="chro"><span class="aud-flag">focus</span>
+<div class="eyebrow">02 // Core HR functional utility suite</div>
+<h2 class="stitle">Six pillars, each with an <em>explicit failure mode.</em></h2>
+<p class="lead">Every pillar below states what it does, the metric it is judged on, and the condition under which it refuses to produce a recommendation.</p>
+</div>
+<div class="pillars rv">
+<div class="pc" data-aud="chro"><span class="aud-flag">focus</span><div><div class="nt"><span>HR FUNCTION 01</span><span class="chip t">Recruiting &amp; TA</span></div><h3>Two-stage unbiased screening</h3><p>Hard PII sharding followed by adversarial gradient reversal against prestige, geography, and career-gap proxies. Uniform k=4 exchangeable observer rubrics.</p><div class="kpi-strip"><span>Proxy MI: <b>&lt;0.012</b></span><span class="tier t1">Tier 1</span></div><div class="formula warn" style="font-size:10.5px">Refuses to rank when adversary AUC &gt; 0.58 on any protected proxy.</div></div><a class="btn btn-ghost btn-sm" style="margin-top:14px" href="#lab">Run the debiasing lab →</a></div>
+<div class="pc" data-aud="chro"><span class="aud-flag">focus</span><div><div class="nt"><span>HR FUNCTION 02</span><span class="chip c">People analytics</span></div><h3>Retention &amp; flight-risk radar</h3><p>Workload, recovery, and review-bottleneck signals aggregated at pod level. Never individual message content. Cold-start capable via hierarchical priors.</p><div class="kpi-strip"><span>Horizon: <b>60–90d</b></span><span class="tier t1">Tier 1</span></div><div class="formula warn" style="font-size:10.5px">Suppresses to BLANK() when N &lt; floor and Γ robustness fails.</div></div><a class="btn btn-ghost btn-sm" style="margin-top:14px" href="#twin">Open retention twin →</a></div>
+<div class="pc" data-aud="chro"><span class="aud-flag">focus</span><div><div class="nt"><span>HR FUNCTION 03</span><span class="chip o">Talent mobility</span></div><h3>Internal skills marketplace</h3><p>Capability-adjacency matching for open requisitions. Employee opt-in governs visibility; hidden employees are excluded from recruiter search by construction.</p><div class="kpi-strip"><span>Opt-in default: <b>OFF</b></span><span class="tier t3">Invariant</span></div><div class="formula" style="font-size:10.5px">Fit(u,req) = cos(V_u, V_req) · k4_verified · opt_in(u)</div></div><a class="btn btn-ghost btn-sm" style="margin-top:14px" href="#frontier">Employee co-pilot →</a></div>
+<div class="pc" data-aud="both"><div><div class="nt"><span>HR FUNCTION 04</span><span class="chip g">Total rewards</span></div><h3>Compensation equity calibration</h3><p>Multivariate decomposition of pay variance against verified contribution hyperedges. Joins run inside a TEE so raw payroll never leaves the enclave.</p><div class="kpi-strip"><span>Unexplained Δ target: <b>&lt;0.4%</b></span><span class="tier t1">Tier 1</span></div><div class="formula" style="font-size:10.5px">Residual variance tested at Γ ≥ 1.5 before any band proposal.</div></div><a class="btn btn-ghost btn-sm" style="margin-top:14px" href="#frontier">TEE join detail →</a></div>
+<div class="pc" data-aud="chro"><span class="aud-flag">focus</span><div><div class="nt"><span>HR FUNCTION 05</span><span class="chip t">Org design &amp; L&amp;D</span></div><h3>Succession &amp; hidden experts</h3><p>Surfaces “quiet unblocking architects” from <i>public</i> review cadence and aggregated calendar load — never message bodies or keystrokes.</p><div class="kpi-strip"><span>Bus-factor depth: <b>2.8×</b></span><span class="tier t1">Tier 1</span></div><div class="formula warn" style="font-size:10.5px">Disabled entirely in EU tenants until Works Council agreement is signed.</div></div><a class="btn btn-ghost btn-sm" style="margin-top:14px" href="#manifest">Metadata manifest →</a></div>
+<div class="pc" data-aud="ciso"><span class="aud-flag">focus</span><div><div class="nt"><span>HR FUNCTION 06</span><span class="chip o">Employee relations</span></div><h3>Safe-Harbor listening</h3><p>Local Wasm stylometric scrub, k-anonymity pod rollup for small teams, and a hard quarterly (ε,δ)-DP budget that stops answering when exhausted.</p><div class="kpi-strip"><span>k threshold: <b>≥10</b></span><span class="tier t2">Tier 2</span></div><div class="formula" style="font-size:10.5px">ε_q = 0.85 / 1.00 · δ = 1e-6 · Gaussian mechanism</div></div><a class="btn btn-ghost btn-sm" style="margin-top:14px" href="#lab">Open privacy lab →</a></div>
+</div>
+
+<div class="roi rv" id="roi" data-aud="chro"><span class="aud-flag">focus</span>
+<div>
+<span class="chip t" style="margin-bottom:10px">Illustrative value model · not a forecast</span>
+<h3 style="font-size:24px;margin-bottom:8px">Transparent HR value model</h3>
+<p style="font-size:13.3px;color:var(--ink2);margin-bottom:16px">Every assumption is exposed and editable. The reduction factors are <b>Tier 1 simulation parameters</b>, not measured client outcomes. Replace them with your own pilot results before taking this to a budget committee.</p>
+<div class="cg"><label><span>Enterprise headcount</span><b id="hcVal" style="color:var(--teal)">2,500</b></label><input type="range" id="hc" min="250" max="25000" step="250" value="2500"></div>
+<div class="cg"><label><span>Baseline regrettable turnover</span><b id="turnVal" style="color:var(--orchid)">14%</b></label><input type="range" id="turn" min="4" max="30" step="1" value="14"></div>
+<div class="g2" style="gap:12px">
+<div class="cg"><label><span>Replacement cost / role ($)</span></label><input type="number" id="repl" value="45000" min="5000" step="1000"></div>
+<div class="cg"><label><span>Agency fee / external fill ($)</span></label><input type="number" id="agency" value="15500" min="1000" step="500"></div>
+</div>
+<div class="g2" style="gap:12px">
+<div class="cg"><label><span>Attrition reduction (Tier 1)</span><b id="redVal">30%</b></label><input type="range" id="red" min="0" max="45" step="1" value="30"></div>
+<div class="cg" style="margin-bottom:0"><label><span>Internal fill uplift (Tier 1)</span><b id="uplVal">38%</b></label><input type="range" id="upl" min="0" max="60" step="1" value="38"></div>
+</div>
+</div>
+<div>
+<div class="g2" style="gap:12px">
+<div class="ob"><div class="k">Attrition cost avoided</div><div class="v" id="oAttr" style="color:var(--teal)">$4.73M</div></div>
+<div class="ob"><div class="k">Agency fees avoided</div><div class="v" id="oMob" style="color:var(--orchid)">$1.18M</div></div>
+<div class="ob"><div class="k">Roles retained / year</div><div class="v" id="oHeads" style="color:var(--gold)">105</div></div>
+<div class="ob"><div class="k">HRBP hours reclaimed</div><div class="v" id="oHours">6,400</div></div>
+</div>
+<div class="formula gold" style="margin-top:14px">Model: avoided = HC × turnover × reduction × replacement_cost. Agency = HC × 0.08 × uplift × fee. Hours = HC × 2.56. All three coefficients are user-editable Tier 1 defaults.</div>
+<p class="note">This calculator deliberately ships with a “set reduction to 0%” control. A vendor model that cannot express its own null hypothesis is not a diligence artefact.</p>
+</div>
+</div>
+</div></section>
+
+<!-- ============ 03 PRIVACY LAB ============ -->
+<section id="lab" class="grid-bg"><div class="wrap">
+<div class="rv" data-aud="ciso"><span class="aud-flag">focus</span>
+<div class="eyebrow">03 // Privacy &amp; fairness laboratory</div>
+<h2 class="stitle">PII stripping is necessary. It is <em>nowhere near sufficient.</em></h2>
+<p class="lead">Two live engines. Safe-Harbor demonstrates k-anonymity pod rollup and a finite differential-privacy budget. The vectorizer demonstrates a two-stage pipeline where a gradient-reversal adversary attacks the residual proxies that survive sharding.</p>
+</div>
+<div class="seg rv" style="margin-top:24px">
+<button id="tabVoice" class="on">01 · Safe-Harbor · k-anonymity + (ε,δ)-DP</button>
+<button id="tabSkill">02 · CV vectorizer · adversarial proxy debiasing</button>
+</div>
+
+<div class="lab-p on rv" id="pVoice">
+<div class="card">
+<div class="lab-h"><h3 style="font-size:19px">Raw submission (ephemeral, local)</h3><span class="chip t">Wasm scrub · client-side</span></div>
+<div class="cg"><textarea id="rawVoice" rows="5">Honestly, since the Q3 release crunch in our Global Supply Chain pod, Director Marcus has been messaging us at 11pm and our senior analysts are completely burned out. Two of my teammates are already interviewing elsewhere because comp calibration was delayed again.</textarea></div>
+<div class="g2" style="gap:12px">
+<div class="cg"><label><span>Submitting pod headcount</span><b id="podVal" style="color:var(--gold)">6</b></label><input type="range" id="pod" min="2" max="40" step="1" value="6"></div>
+<div class="cg"><label><span>k-anonymity threshold</span></label><select id="kThresh"><option value="10" selected>k ≥ 10 (default)</option><option value="5">k ≥ 5 (relaxed)</option><option value="15">k ≥ 15 (strict)</option></select></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-pri btn-sm" id="sanitizeBtn">Scrub &amp; route to HRBP</button><button class="btn btn-ghost btn-sm" id="sampleBtn">Load another signal</button></div>
+<div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
+<div style="display:flex;justify-content:space-between;font-family:var(--font-m);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2)"><span>Quarterly DP budget</span><b id="dpVal" style="color:var(--teal)">ε 0.70 / 1.00</b></div>
+<div class="gauge"><i id="dpBar" style="width:70%"></i></div>
+<p style="font-family:var(--font-m);font-size:10px;color:var(--muted);margin-top:7px">δ = 1e-6 · Gaussian mechanism · clip norm 1.0 · per-query cost ε 0.15 · resets each quarter</p>
+</div>
+</div>
+<div class="card">
+<div class="lab-h"><h3 style="font-size:19px">HRBP-actionable signal</h3><span class="chip o" id="shHash">SVID · pending</span></div>
+<div class="formula" id="kOut" style="margin-top:0;margin-bottom:12px">Awaiting submission…</div>
+<div class="code" id="shOut" style="max-height:340px;overflow-y:auto"></div>
+</div>
+</div>
+
+<div class="lab-p rv" id="pSkill">
+<div class="card">
+<div class="lab-h"><h3 style="font-size:19px">Candidate artefact stream</h3><span class="chip g">Uniform k=4</span></div>
+<div class="cg"><textarea id="rawCv" rows="5">Senior Workforce &amp; Systems Architect · 7 yrs enterprise data pipelines · cross-functional mentorship of 14 analysts across 3 regions · led post-merger ERP &amp; HRIS consolidation reducing reporting latency by 41% · ISO 42001 governance certified.</textarea></div>
+<div class="g2" style="gap:12px">
+<div class="cg"><label><span>Gradient-reversal λ</span><b id="lamVal">0.60</b></label><input type="range" id="lam" min="0" max="100" step="5" value="60"></div>
+<div class="cg"><label><span>Adversary head</span></label><select id="advHead"><option value="multi" selected>Multi-proxy (3 heads)</option><option value="prestige">University prestige only</option><option value="zip">ZIP / geography only</option></select></div>
+</div>
+<button class="btn btn-pri btn-sm" id="vecBtn">Run two-stage pipeline</button>
+<div class="formula" style="margin-top:16px">Stage 1 removes direct identifiers. Stage 2 trains a proxy adversary and reverses its gradient into the encoder: min_θ max_φ L_task(θ) − λ·L_proxy(θ,φ).</div>
+<p class="note">Setting λ = 0 reproduces the v4.0 “PII-stripping only” behaviour. Watch the mutual-information column fail.</p>
+</div>
+<div class="card">
+<div class="lab-h"><h3 style="font-size:19px">Proxy-leakage diagnostic</h3><span class="chip t" id="miBadge">idle</span></div>
+<div class="mono" style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Stage 1 · hard sharding</div>
+<div id="stage1" style="font-family:var(--font-m);font-size:11.5px;line-height:1.9;color:var(--ink2)"></div>
+<div class="mono" style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px">Stage 2 · adversarial reversal · <span id="epoch">epoch 0/8</span></div>
+<div id="stage2"></div>
+<div class="formula" id="miSummary" style="margin-top:14px">Run the pipeline to compute I(representation ; protected proxy).</div>
+</div>
+</div>
+</div></section>
+
+<!-- ============ 04 WORKS COUNCIL MANIFEST ============ -->
+<section id="manifest" style="background:var(--bg2)"><div class="wrap">
+<div class="rv" data-aud="ciso"><span class="aud-flag">focus</span>
+<div class="eyebrow">04 // Works Council metadata ingestion manifest</div>
+<h2 class="stitle">An anti-surveillance guarantee, <em>expressed as an allow-list.</em></h2>
+<p class="lead">“Quiet unblocking architects” and burnout alerts are only legitimate if the ingestion surface is bounded and inspectable. This manifest is the contract. It is enforced at the adapter, not in policy prose. In EU tenants, ingestion is <b>off by default</b> until a co-determination agreement is countersigned.</p>
+</div>
+<div class="card rv" style="margin-top:24px" data-aud="ciso">
+<div class="lab-h">
+<div><h3 style="font-size:18px">Ingestion surface</h3><p style="font-size:12.5px;color:var(--muted);margin-top:4px">Toggle the tenant regime to see what the adapter physically permits.</p></div>
+<label class="sw"><input type="checkbox" id="wcMode" checked><span class="track"></span><span>EU Works Council mode</span></label>
+</div>
+<div class="seg" style="margin-top:14px">
+<button class="on" data-mf="all">Show full manifest</button>
+<button data-mf="ok">Allowed only</button>
+<button data-mf="no">Hard-blocked only</button>
+</div>
+<div class="g2" style="gap:20px;margin-top:6px">
+<div><div class="mono" style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px">Allowed · aggregated &amp; purpose-bound</div><div id="mfOk"></div></div>
+<div><div class="mono" style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);margin-bottom:10px">Hard-blocked · adapter-level deny</div><div id="mfNo"></div></div>
+</div>
+<div class="formula" id="mfState" style="margin-top:16px"></div>
+<div class="g4" style="margin-top:16px">
+<div class="ob"><div class="k">Allowed signals</div><div class="v" id="mfCountOk" style="color:var(--teal);font-size:22px">3</div></div>
+<div class="ob"><div class="k">Blocked signals</div><div class="v" id="mfCountNo" style="color:var(--crimson);font-size:22px">6</div></div>
+<div class="ob"><div class="k">Retention window</div><div class="v" style="font-size:22px">90d</div></div>
+<div class="ob"><div class="k">Individual message bodies</div><div class="v" style="color:var(--crimson);font-size:22px">0</div></div>
+</div>
+<p class="note">Legal basis mapping: aggregated calendar load and public review cadence are processed under legitimate interest with a documented balancing test; the Wasm pulse is explicit consent, revocable per employee, and is force-disabled under EU Works Council mode until the agreement schedules it.</p>
+</div>
+</div></section>
+
+<!-- ============ 05 RETENTION TWIN ============ -->
+<section id="twin" class="grid-bg"><div class="wrap">
+<div class="rv" data-aud="chro"><span class="aud-flag">focus</span>
+<div class="eyebrow">05 // Counterfactual retention twin · cold-start capable</div>
+<h2 class="stitle">Most mid-sized enterprises have <em>two policy changes, not two hundred.</em></h2>
+<p class="lead">A causal engine that only works on rich telemetry is useless to a 1,000–5,000 person employer. v4.1 adds <b>Hierarchical Empirical Bayes shrinkage</b> toward a DP-protected consortium prior, and reports <b>Rosenbaum sensitivity bounds (Γ)</b> so you can see exactly how much unmeasured confounding would flip the sign — instead of silently emitting <code>BLANK()</code>.</p>
+</div>
+<div class="oracle rv">
+<div class="card">
+<h3 style="font-size:20px;margin-bottom:14px">Intervention &amp; identification controls</h3>
+<div class="mono" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">Cohort data regime</div>
+<div class="seg" id="regimeSeg">
+<button class="on" data-reg="rich">Rich historical telemetry</button>
+<button data-reg="cold">Cold-start hierarchical priors</button>
+</div>
+<div class="cg"><label><span>HR / organisational intervention</span></label>
+<select id="pol">
+<option value="weather">Burnout weather shield &amp; workload rebalance</option>
+<option value="corridor">Internal mobility &amp; upskilling corridor</option>
+<option value="hidden">Hidden-expert recognition &amp; pay-equity adjustment</option>
+<option value="reorg">Post-merger division consolidation</option>
+</select></div>
+<div class="cg"><label><span>Rollout intensity</span><span id="intVal">65%</span></label><input type="range" id="inten" min="15" max="100" value="65"></div>
+<div class="cg"><label><span>Forecast horizon</span><span id="horVal">90 days</span></label><input type="range" id="hor" min="30" max="180" step="30" value="90"></div>
+<div class="cg"><label><span>Necessity floor N</span><span id="floorVal">0.75</span></label><input type="range" id="floor" min="50" max="90" value="75"></div>
+<div class="cg"><label><span>Rosenbaum Γ tolerance</span><span id="gamVal">1.50</span></label><input type="range" id="gam" min="100" max="220" step="5" value="150"></div>
+<div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn btn-pri btn-sm" id="runSim" style="flex:1">Run simulation</button><button class="btn btn-ghost btn-sm" id="commitSim">Commit to scorecard</button></div>
+<div class="formula" id="gate" style="margin-top:14px">STATUS · pending</div>
+</div>
+<div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
+<div>
+<div class="lab-h"><span class="mono" style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)">Monte Carlo trajectory · Π upper / N lower</span><span class="chip t" id="simBadge">—</span></div>
+<canvas id="oracle" style="width:100%;height:240px;background:var(--space);border-radius:var(--r-sm);border:1px solid var(--line2);display:block"></canvas>
+<div class="readout">
+<div class="ob"><div class="k">Projected OEI</div><div class="v" id="oOei" style="color:var(--teal)">0.77</div></div>
+<div class="ob"><div class="k">Necessity N</div><div class="v" id="oNec" style="color:var(--gold)">0.85</div></div>
+<div class="ob"><div class="k">Γ critical</div><div class="v" id="oGam" style="color:var(--orchid)">1.85</div></div>
+<div class="ob"><div class="k">Shrinkage w</div><div class="v" id="oShr" style="font-size:22px">0.92</div></div>
+<div class="ob"><div class="k">Effective n</div><div class="v" id="oEss" style="font-size:22px">14</div></div>
+<div class="ob"><div class="k">Evidence tier</div><div class="v" id="oTier" style="font-size:20px">T1</div></div>
+</div>
+</div>
+<div>
+<div class="formula" id="ebForm" style="margin-top:16px"></div>
+<div class="formula gold" id="coldNote" style="display:none"></div>
+<p class="note" id="regimeNote"></p>
+</div>
+</div>
+</div>
+</div></section>
+
+<!-- ============ 06 SCORECARD ============ -->
+<section id="scorecard" style="background:var(--bg2)"><div class="wrap">
+<div class="rv" data-aud="chro"><span class="aud-flag">focus</span>
+<div class="eyebrow">06 // CHRO command center</div>
+<h2 class="stitle">Seven indices, <em>one governed decision ledger.</em></h2>
+<p class="lead">Click a tile to inspect its trend. Click a decision row to open the bonded HiTL audit modal. Exports are flattened for Power BI / Snowflake and include the evidence tier of every metric.</p>
+</div>
+<div class="dash rv">
+<div class="dash-top">
+<span class="dot" style="background:#F43F5E"></span><span class="dot" style="background:#FBBF24"></span><span class="dot" style="background:#2DD4BF"></span>
+<span class="mono" style="font-size:10px;color:var(--muted);margin-left:6px;letter-spacing:.09em;text-transform:uppercase">J.U.L.E.S. HR-OS v4.1 · governed scorecard</span>
+<div style="margin-left:auto;display:flex;gap:7px;flex-wrap:wrap">
+<button class="btn btn-ghost btn-sm" id="expCsv">Export Power BI CSV</button>
+<button class="btn btn-ghost btn-sm" id="expJson">Export AperX audit JSON</button>
+<span class="chip t">Simulation telemetry</span>
+</div>
+</div>
+<div class="tiles" id="tiles"></div>
+<div class="dash-body">
+<div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap"><div class="mono" style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)" id="sparkTitle">Org Evolution Index (OEI) · trailing 90d</div><span class="tier t1">Tier 1</span></div>
+<canvas id="spark" style="width:100%;height:165px;display:block"></canvas>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap"><div class="mono" style="font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)">Governed proposals · click for HiTL sign-off</div><span class="chip o" id="decCount">4 active</span></div>
+<table class="dt"><thead><tr><th>Proposal</th><th>N</th><th>Status</th></tr></thead><tbody id="decBody"></tbody></table>
+</div>
+</div>
+</div>
+<div class="g3 rv" style="margin-top:26px">
+<div class="card" data-aud="chro"><span class="aud-flag">focus</span><div class="mono" style="font-size:9.5px;color:var(--muted);letter-spacing:.11em;text-transform:uppercase">Recall at 60-day horizon</div><div style="font-family:var(--font-d);font-size:52px;line-height:.95;margin:12px 0">74<span style="color:var(--teal)">%</span></div><p style="font-size:13.5px;color:var(--ink2)">Recall of regrettable-attrition events in a controlled synthetic workforce, 60 days before separation. Precision 0.61. False-positive cost is a real HRBP conversation.</p><div style="margin-top:12px"><span class="tier t1">Tier 1 · simulation, seed published</span></div></div>
+<div class="card" data-aud="ciso"><span class="aud-flag">focus</span><div class="mono" style="font-size:9.5px;color:var(--muted);letter-spacing:.11em;text-transform:uppercase">Selection-rate parity</div><div style="font-family:var(--font-d);font-size:52px;line-height:.95;margin:12px 0">1.00<span style="color:var(--teal)">×</span></div><p style="font-size:13.5px;color:var(--ink2)">Adverse-impact ratio is an enforced runtime invariant, not a marketing result. The circuit breaker freezes recommendations if any protected subgroup falls below 0.80×.</p><div style="margin-top:12px"><span class="tier t3">Tier 3 · architectural invariant</span></div></div>
+<div class="card" data-aud="both"><div class="mono" style="font-size:9.5px;color:var(--muted);letter-spacing:.11em;text-transform:uppercase">Client out-of-time backtests</div><div style="font-family:var(--font-d);font-size:52px;line-height:.95;margin:12px 0">0<span style="color:var(--gold)"> published</span></div><p style="font-size:13.5px;color:var(--ink2)">We have not yet published a client hold-out backtest. Prospective pilots run in shadow mode for 60 days against your own history before any recommendation is surfaced.</p><div style="margin-top:12px"><span class="tier t3">Tier 3 · available under NDA</span></div></div>
+</div>
+</div></section>
+
+<!-- ============ 07 HYPERGRAPH ============ -->
+<section id="instrument" class="grid-bg"><div class="wrap">
+<div class="rv" data-aud="both">
+<div class="eyebrow">07 // The four hypergraph classes</div>
+<h2 class="stitle">Org charts cannot represent <em>who actually unblocked the work.</em></h2>
+<p class="lead">AperX models four edge classes. Click any vertex to simulate a departure and watch skill saturation σ_d recompute — this is the bus-factor instrument behind succession planning.</p>
+</div>
+<div class="hg-panel rv">
+<div style="position:relative"><canvas class="hg-cv" id="hg" aria-label="Interactive hypergraph"></canvas><div class="hud" id="hgHud">ACTIVE VERTICES 8/8 · CLICK TO SIMULATE DEPARTURE</div></div>
+<div>
+<div class="seg" id="hgSeg"><button class="on" data-h="directed">Directed</button><button data-h="uniform">Uniform</button><button data-h="pseudo">Pseudo</button><button data-h="complete">Complete</button></div>
+<div class="card">
+<div class="mono" style="font-size:9.5px;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-bottom:6px">Active topology class</div>
+<h3 id="hgName" style="font-size:21px;margin-bottom:8px">Directed · attribution</h3>
+<p id="hgDesc" style="font-size:13px;color:var(--ink2)"></p>
+<div class="formula" id="hgForm"></div>
+<div style="margin-top:13px;padding-top:13px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--font-m);font-size:11px"><span>σ_d saturation: <b id="hgSat" style="color:var(--teal)">0.429</b></span><button class="btn btn-ghost btn-sm" data-ref="SC-2026.01">Proof</button></div>
+</div>
+<p class="note">σ_d = |E_d| / C(n_d,k). Complete-class saturation is the formal measure of how much of a capability domain is already cross-trained.</p>
+</div>
+</div>
+</div></section>
+
+<!-- ============ 08 CONNECTIVITY + HITL ============ -->
+<section id="connect" style="background:var(--bg2)"><div class="wrap">
+<div class="rv" data-aud="ciso"><span class="aud-flag">focus</span>
+<div class="eyebrow">08 // HRIS connectivity &amp; last-mile HiTL write-back</div>
+<h2 class="stitle">Reading is easy. <em>Writing back is where liability lives.</em></h2>
+<p class="lead">Four query surfaces plus a fifth tab that shows the only path by which J.U.L.E.S. can change a system of record: a structured approval card, cryptographically signed by a bonded HRBP, bound to an AperX commitment hash.</p>
+</div>
+<div class="g2 rv" style="margin-top:26px;grid-template-columns:1.15fr .85fr">
+<div class="sdk">
+<div class="sdk-h">
+<div style="display:flex;gap:6px"><span style="width:9px;height:9px;border-radius:50%;background:#F43F5E"></span><span style="width:9px;height:9px;border-radius:50%;background:#FBBF24"></span><span style="width:9px;height:9px;border-radius:50%;background:#2DD4BF"></span></div>
+<div class="sdk-tabs" id="sdkTabs">
+<button class="sdk-tab on" data-lang="python">Python</button>
+<button class="sdk-tab" data-lang="dax">Power BI DAX</button>
+<button class="sdk-tab" data-lang="ts">HRIS bridge</button>
+<button class="sdk-tab" data-lang="rust">Rust core</button>
+<button class="sdk-tab" data-lang="hitl">HiTL write-back</button>
+</div>
+<button class="btn btn-ghost btn-sm" id="sdkRun" style="color:#2DD4BF;border-color:rgba(45,212,191,.35)">▶ Execute</button>
+</div>
+<pre class="sdk-pre" id="sdkCode"></pre>
+<div class="sdk-f"><span id="sdkResult">READY · collection sgrg_workforce_v41</span><span style="color:#2DD4BF">p99 1.34 ms</span></div>
+</div>
+<div>
+<div class="card" id="hitlCard" data-aud="ciso">
+<div class="lab-h"><h3 style="font-size:19px">Bonded approval card</h3><span class="chip g" id="hitlStatus">AWAITING SIGNATURE</span></div>
+<div class="code" id="hitlJson" style="max-height:280px;overflow-y:auto;font-size:11px"></div>
+<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+<button class="btn btn-pri btn-sm" id="signBtn">Sign as bonded HRBP</button>
+<button class="btn btn-ghost btn-sm" id="escalateBtn">Escalate to Works Council</button>
+</div>
+<div class="formula" id="hitlGate" style="margin-top:14px">Write-back is blocked. 0 automated adverse actions have ever executed.</div>
+<div class="g2" style="gap:10px;margin-top:14px">
+<div class="ob"><div class="k">Automated adverse actions</div><div class="v" id="adverseCount" style="color:var(--teal)">0</div></div>
+<div class="ob"><div class="k">Signed write-backs</div><div class="v" id="signedCount" style="color:var(--orchid)">0</div></div>
+</div>
+<p class="note">Signature scheme: Ed25519 over the canonical JSON of the proposal, with the AperX commitment hash as a bound field. Replay is prevented by a monotonic nonce and a 15-minute expiry.</p>
+</div>
+</div>
+</div>
+</div></section>
+
+<!-- ============ 09 DOMAINS ============ -->
+<section id="domains" class="grid-bg"><div class="wrap">
+<div class="rv" data-aud="both">
+<div class="eyebrow">09 // Sixteen intelligence domains</div>
+<h2 class="stitle">From an HR signal to a <em>board-level invariant.</em></h2>
+<p class="lead">Click a domain to load its formal invariant, its live telemetry shape, and to seed the retention twin with the matching intervention.</p>
+</div>
+<div class="dom-grid rv" id="domGrid"></div>
+<div class="drawer rv">
+<div>
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px"><span class="chip t" id="ddNum">DOMAIN 01</span><span class="chip o" id="ddClass">—</span></div>
+<h3 id="ddTitle" style="font-size:24px;margin-bottom:8px">Organizational digital twin</h3>
+<p id="ddDesc" style="color:var(--ink2);font-size:14px;margin-bottom:10px"></p>
+<div class="formula" id="ddForm"></div>
+</div>
+<div class="card" style="background:var(--surface2)">
+<div class="mono" style="font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Domain telemetry shape</div>
+<p class="mono" id="ddSig" style="font-size:11.5px;margin-bottom:14px"></p>
+<a href="#twin" class="btn btn-pri btn-sm" id="ddSim">Seed retention twin →</a>
+</div>
+</div>
+</div></section>
+
+<!-- ============ 10 R&D FRONTIER ============ -->
+<section id="frontier" style="background:var(--bg2)"><div class="wrap">
+<div class="rv" data-aud="ciso"><span class="aud-flag">focus</span>
+<div class="eyebrow">10 // R&amp;D frontier · v4.1 lab preview</div>
+<h2 class="stitle">Advanced capabilities, <em>labelled by maturity — not by ambition.</em></h2>
+<p class="lead">This section exists for forward-looking CISOs and Chief People Scientists. Each module states its build status explicitly: <b>implemented</b>, <b>reference implementation</b>, or <b>research prototype</b>. Interactive simulators below demonstrate the verification flow, not a production cryptographic guarantee.</p>
+</div>
+
+<!-- ZK -->
+<div class="lab-block rv" data-aud="ciso">
+<div class="lab-h"><div><h3>10.1 · Zero-knowledge fairness attestation</h3><p style="font-size:13px;color:var(--ink2);margin-top:5px;max-width:74ch">A regulator or Works Council auditor verifies that a slate satisfied <code>AIR ≥ 0.80</code> and <code>PII_Sharded = TRUE</code> without receiving a single résumé, capability vector, or model weight.</p></div><span class="chip g">Research prototype · Halo2</span></div>
+<div class="g2" style="gap:20px;margin-top:8px">
+<div>
+<div class="mono" style="font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Public inputs (revealed)</div>
+<div class="code" id="zkPublic" style="font-size:11px"></div>
+<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+<button class="btn btn-pri btn-sm" id="zkVerify">Verify ZK-proof receipt</button>
+<label class="sw"><input type="checkbox" id="zkTamper"><span class="track"></span><span>Tamper public input</span></label>
+</div>
+</div>
+<div>
+<div class="mono" style="font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Verifier transcript</div>
+<div class="steps" id="zkLog">Awaiting verification request…</div>
+<div class="formula" id="zkStatus" style="margin-top:12px">STATUS · idle</div>
+</div>
+</div>
+<p class="note">Private witness (never revealed): individual résumés, capability embeddings, observer identities, proprietary rubric weights. Circuit enforces the AIR inequality and the sharding predicate over committed inputs. This UI simulates the verification transcript; the Halo2 circuit is not yet production-audited.</p>
+</div>
+
+<!-- ERASURE -->
+<div class="lab-block rv" data-aud="ciso">
+<div class="lab-h"><div><h3>10.2 · GDPR Art. 17 cryptographic salt-shredding</h3><p style="font-size:13px;color:var(--ink2);margin-top:5px;max-width:74ch">An immutable ledger and a right to erasure appear contradictory. They are not, if the ledger stores only <i>salted</i> vertex commitments and the salt lives in a customer-managed HSM key.</p></div><span class="chip t">Implemented · CMK/HSM</span></div>
+<div class="flow">
+<div class="fnode" id="fnCmk"><b>Customer CMK (HSM)</b>Per-employee salt derived under a customer-managed key. Simon Global never holds the key material.</div>
+<div class="fnode" id="fnHash"><b>Salted vertex commitment</b>H = SHA3-256(salt_u ‖ employee_id). Stored on AperX. Not reversible without the salt.</div>
+<div class="fnode" id="fnAgg"><b>Aggregate audit integrity</b>Merkle roots and AIR computations remain verifiable after erasure; only the individual linkage is destroyed.</div>
+</div>
+<div class="g2" style="gap:20px;margin-top:16px">
+<div><div class="mono" style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:7px">Vertex commitment before</div><div class="code" id="hashBefore" style="font-size:11px"></div></div>
+<div><div class="mono" style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:7px">After salt destruction</div><div class="code" id="hashAfter" style="font-size:11px">— not yet executed —</div></div>
+</div>
+<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button class="btn btn-danger btn-sm" id="shredBtn">Execute Art. 17 erasure</button><button class="btn btn-ghost btn-sm" id="shredReset">Restore demo state</button></div>
+<div class="formula" id="shredState" style="margin-top:12px">Linkage active. Aggregate proofs valid.</div>
+</div>
+
+<!-- TEE -->
+<div class="lab-block rv" data-aud="ciso">
+<div class="lab-h"><div><h3>10.3 · Confidential computing for cross-silo joins</h3><p style="font-size:13px;color:var(--ink2);margin-top:5px;max-width:74ch">Payroll (Total Rewards) and collaboration metadata (Org Design) are joined inside a hardware-isolated enclave. Neither cloud administrators nor Simon Global engineers can observe raw employee records.</p></div><span class="chip o">Reference impl · AWS Nitro Enclaves</span></div>
+<div class="flow">
+<div class="fnode"><b>1 · Sealed inputs</b>Payroll and collaboration tables encrypted to the enclave's attested public key. Plaintext never touches host memory.</div>
+<div class="fnode"><b>2 · Remote attestation</b>Nitro attestation document with PCR measurements verified before any key release from the customer KMS.</div>
+<div class="fnode"><b>3 · Aggregate-only egress</b>Only k-anonymised, DP-noised aggregates leave the enclave. Row-level output is blocked by the egress policy.</div>
+</div>
+<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button class="btn btn-pri btn-sm" id="teeBtn">Request remote attestation</button><button class="btn btn-ghost btn-sm" id="teeTamperBtn">Simulate modified enclave image</button></div>
+<div class="steps" id="teeLog">No attestation requested.</div>
+<p class="note">Production availability is gated on customer VPC deployment. In the shared-service tier, cross-silo joins are disabled rather than downgraded.</p>
+</div>
+
+<!-- EMPLOYEE TWIN -->
+<div class="lab-block rv" data-aud="chro">
+<div class="lab-h"><div><h3>10.4 · Employee-owned digital twin co-pilot</h3><p style="font-size:13px;color:var(--ink2);margin-top:5px;max-width:74ch">Organisational analytics without employee agency is surveillance with better maths. Opt-in lets an individual inspect their own capability hyperedges and simulate their own corridors.</p></div><label class="sw"><input type="checkbox" id="empToggle"><span class="track"></span><span>Employee self-service view</span></label></div>
+<div id="empPanel" style="display:none">
+<div class="g2" style="gap:20px;margin-top:8px">
+<div class="card" style="background:var(--surface2)">
+<div class="mono" style="font-size:10px;color:var(--teal);text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px">My capability hyperedges</div>
+<div class="code" style="font-size:11px">e_self = (
+  T: [data_pipelines, mentorship_14, erp_consolidation],
+  H: principal_systems_architect,
+  ω: 0.91,
+  verified_by: k4_observers,
+  visible_to_me: TRUE
+)</div>
+<div class="cg" style="margin-top:14px"><label><span>Simulate upskilling corridor</span></label><select id="empCorridor"><option value="gov">Algorithmic governance (+KLS 0.14)</option><option value="lead">People-leadership track (+KLS 0.09)</option><option value="arch">Principal architecture (+KLS 0.11)</option></select></div>
+<div class="ob"><div class="k">My knowledge liquidity</div><div class="v" id="empKls" style="color:var(--teal)">0.64</div></div>
+</div>
+<div class="card" style="background:var(--surface2)">
+<div class="mono" style="font-size:10px;color:var(--orchid);text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px">My visibility controls</div>
+<label class="sw" style="margin-bottom:12px"><input type="checkbox" id="empOptIn"><span class="track"></span><span>Visible in internal marketplace</span></label>
+<div class="formula" id="empMarket">Marketplace visibility OFF. You are excluded from recruiter adjacency search by construction.</div>
+<div class="formula gold" style="margin-top:12px">Revoking opt-in removes you from future searches immediately and expires existing cached matches within 24h. It does not retroactively alter aggregate audits.</div>
+<p class="note">Employees can also flag an incorrect capability edge. Disputed edges are suspended from promotion and pay models pending k=4 re-verification.</p>
+</div>
+</div>
+</div>
+<p class="note" id="empOff">Self-service view is currently disabled in this demo. Toggle it on to inspect the employee-side surface.</p>
+</div>
+
+<!-- CIRCUIT BREAKER -->
+<div class="lab-block rv" data-aud="ciso">
+<div class="lab-h"><div><h3>10.5 · Regulatory drift watchdog &amp; governance circuit breaker</h3><p style="font-size:13px;color:var(--ink2);margin-top:5px;max-width:74ch">A rolling 30-day monitor on selection-rate parity and causal calibration. If any protected subgroup drops below 0.80× AIR, recommendations freeze and the CISO/CHRO are notified.</p></div><span class="chip t">Implemented · runtime monitor</span></div>
+<div class="bars" id="cbBars"></div>
+<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button class="btn btn-danger btn-sm" id="cbInject">Inject drift event</button><button class="btn btn-ghost btn-sm" id="cbReset">Re-validate &amp; reset breaker</button></div>
+<div class="formula" id="cbState" style="margin-top:12px">BREAKER CLOSED · all subgroups ≥ 0.80 AIR · recommendations flowing</div>
+<div class="steps" id="cbIncident" style="display:none"></div>
+</div>
+</div></section>
+
+<!-- ============ 11 COMPETITIVE ============ -->
+<section id="compete" class="grid-bg"><div class="wrap">
+<div class="rv" data-aud="both">
+<div class="eyebrow">11 // Analyst-grade positioning &amp; buyer fit</div>
+<h2 class="stitle">A fair comparison, and an honest <em>“do not buy us” list.</em></h2>
+<p class="lead">The v4.0 page caricatured incumbents as “lagging” and generic AI as “hallucinating”. That is not diligence-grade. Below is a capability-framing comparison and a decision guide. Competitor roadmaps move quickly; treat this as a positioning framework, not a feature audit, and validate against current vendor documentation.</p>
+</div>
+<div class="cmp-wrap rv">
+<table class="cmp">
+<thead><tr><th style="width:24%">Capability dimension</th><th class="us" style="width:26%">J.U.L.E.S. HR-OS™ v4.1</th><th style="width:25%">Enterprise HCM suites<br><span style="font-weight:400;text-transform:none;letter-spacing:0">Workday Illuminate · Peakon · SAP</span></th><th style="width:25%">People analytics &amp; talent AI<br><span style="font-weight:400;text-transform:none;letter-spacing:0">Visier · Eightfold AI</span></th></tr></thead>
+<tbody>
+<tr><td>System of record</td><td class="no">Not a system of record. Overlay only.</td><td class="yes">Native, deep, payroll-grade</td><td class="part">Partial; typically relies on HCM</td></tr>
+<tr><td>Causal identification &amp; sensitivity</td><td class="yes">Empirical-Bayes shrinkage + Rosenbaum Γ reported per estimate</td><td class="part">Predominantly descriptive &amp; predictive</td><td class="part">Predictive matching; causal claims vary</td></tr>
+<tr><td>Cold-start behaviour</td><td class="yes">Explicit prior-dominated regime with labelled tier</td><td class="part">Requires historical volume</td><td class="part">Requires historical volume</td></tr>
+<tr><td>Proxy-bias adversarial testing</td><td class="yes">Gradient reversal + published MI diagnostic</td><td class="part">Bias dashboards; adversarial testing not typical</td><td class="part">Vendor bias audits; method disclosure varies</td></tr>
+<tr><td>Formal DP budget accounting</td><td class="yes">Per-quarter (ε,δ) ledger with hard stop</td><td class="no">Not typical</td><td class="no">Not typical</td></tr>
+<tr><td>Cryptographic decision lineage</td><td class="yes">AperX commitments + Ed25519 HiTL write-back</td><td class="part">Audit logs, not cryptographic replay</td><td class="part">Audit logs, not cryptographic replay</td></tr>
+<tr><td>Works Council co-determination tooling</td><td class="yes">Adapter-level allow-list + EU default-off</td><td class="yes">Mature regional compliance programmes</td><td class="part">Regional configuration</td></tr>
+<tr><td>Third-party assurance maturity</td><td class="part">Seed stage · SOC 2 / LL144 in progress</td><td class="yes">Established, multi-year attestations</td><td class="yes">Established attestations</td></tr>
+<tr><td>Deployment &amp; change cost</td><td class="part">Overlay pilot; low footprint, new vendor risk</td><td class="no">High; suite-wide transformation</td><td class="part">Moderate; integration-heavy</td></tr>
+</tbody>
+</table>
+</div>
+<div class="g2 rv" style="margin-top:24px">
+<div class="card" data-aud="chro"><span class="aud-flag">focus</span>
+<h3 style="font-size:19px;margin-bottom:12px;color:var(--teal)">Overlay J.U.L.E.S. when…</h3>
+<ul style="font-size:13.5px;color:var(--ink2);line-height:1.85;padding-left:20px">
+<li>You already run Workday / SuccessFactors and do <b>not</b> want a replacement programme.</li>
+<li>You are 1,000–5,000 employees with sparse policy history and need cold-start-honest causal estimates.</li>
+<li>A Works Council, regulator, or plaintiff's counsel will ask you to <b>replay</b> a specific promotion or selection decision.</li>
+<li>You need formal DP accounting and k-anonymity for employee listening, not just an anonymity promise.</li>
+<li>You want an adversarial proxy-bias diagnostic you can hand to an independent auditor.</li>
+</ul>
+</div>
+<div class="card" data-aud="both">
+<h3 style="font-size:19px;margin-bottom:12px;color:var(--gold)">Native HCM suffices when…</h3>
+<ul style="font-size:13.5px;color:var(--ink2);line-height:1.85;padding-left:20px">
+<li>Your question is descriptive: headcount, turnover, span of control, comp ratios. Your suite already answers it.</li>
+<li>You have no governance requirement for cryptographic replay or third-party bias attestation.</li>
+<li>Your procurement policy cannot onboard a seed-stage vendor with an open SOC 2 observation window.</li>
+<li>You lack an HRBP owner with capacity to sign governed write-backs — the HiTL requirement becomes a bottleneck, not a safeguard.</li>
+<li>You need payroll, benefits, or time tracking. We do not do those, and we will say so in the first call.</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<!-- ============ 12 CHARTER ============ -->
+<section id="charter" style="background:var(--bg2)"><div class="wrap">
+<div class="vision rv" data-aud="both">
+<div class="eyebrow">12 // Charter</div>
+<blockquote class="vq">“Human Resources should never merely administrate policy — it should architect human potential. But it must do so with worker privacy, mathematically unbiased evaluation, and counterfactual humility, or it is simply surveillance with better vocabulary.”</blockquote>
+<div style="display:flex;align-items:center;gap:13px;flex-wrap:wrap">
+<svg viewBox="0 0 240 240" style="width:40px;height:40px"><use href="#mark"/></svg>
+<div><div style="font-weight:700;font-size:14px">Simon Global Resources Group · People Science &amp; Epistemic Systems</div><div class="mono" style="font-size:10px;color:var(--muted);letter-spacing:.09em;text-transform:uppercase">Interdisciplinary research collective · Detroit, MI</div></div>
+</div>
+<p class="note" style="margin-top:20px">We are an interdisciplinary team of subject-matter experts and researchers spanning machine learning and causal inference, industrial–organisational psychology, labour economics, cryptography and privacy engineering, and people operations. We publish methodology notes alongside the product.</p>
+</div>
+<div class="g4 rv" style="margin-top:26px">
+<div class="card" data-aud="ciso"><span class="aud-flag">focus</span><div class="mono" style="font-size:9.5px;color:var(--teal);letter-spacing:.11em;text-transform:uppercase">EEOC / OFCCP</div><p style="font-size:12.8px;color:var(--ink2);margin-top:9px">Four-fifths testing as a runtime invariant with a tripping circuit breaker, not an annual report.</p></div>
+<div class="card" data-aud="ciso"><span class="aud-flag">focus</span><div class="mono" style="font-size:9.5px;color:var(--teal);letter-spacing:.11em;text-transform:uppercase">EU AI Act Annex III</div><p style="font-size:12.8px;color:var(--ink2);margin-top:9px">High-risk employment documentation pack: intended purpose, risk management, data governance, human oversight, logging.</p></div>
+<div class="card" data-aud="ciso"><span class="aud-flag">focus</span><div class="mono" style="font-size:9.5px;color:var(--teal);letter-spacing:.11em;text-transform:uppercase">GDPR / Works Council</div><p style="font-size:12.8px;color:var(--ink2);margin-top:9px">Adapter allow-list, EU default-off ingestion, Art. 17 salt-shredding, DP budget ledger.</p></div>
+<div class="card" data-aud="ciso"><span class="aud-flag">focus</span><div class="mono" style="font-size:9.5px;color:var(--teal);letter-spacing:.11em;text-transform:uppercase">NYC LL144 / ISO 42001</div><p style="font-size:12.8px;color:var(--ink2);margin-top:9px">Independent bias-audit template and candidate-notice flow ready; auditor engagement pending.</p></div>
+</div>
+<div style="margin-top:22px" class="rv"><button class="btn btn-ghost btn-sm" id="gcBtn">Read the CHRO &amp; General Counsel compliance dossier →</button></div>
+</div></section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="grid-bg"><div class="wrap" style="text-align:center">
+<svg viewBox="0 0 240 240" style="width:66px;height:66px;margin:0 auto 18px" class="rv in"><use href="#mark"/></svg>
+<h2 class="stitle rv">Ask us the <em>hard question first.</em></h2>
+<p class="lead rv" style="margin:0 auto 28px">We take a limited number of shadow-mode pilots per quarter. Bring your CISO and your Works Council chair to the first call — we would rather lose a deal in week one than in month nine.</p>
+<div class="card rv" style="max-width:740px;margin:0 auto;text-align:left">
+<div class="lab-h"><h3 style="font-size:21px">Configure a diligence pack</h3><span class="chip t">Mutual NDA · sandbox ready</span></div>
+<div class="g2" style="gap:14px">
+<div class="cg"><label>Organisation</label><input type="text" id="bfOrg" placeholder="e.g. Meridian Global Holdings"></div>
+<div class="cg"><label>Workforce scale</label><select id="bfScale"><option>250–1,000</option><option selected>1,000–5,000 (cold-start regime)</option><option>5,000–25,000</option><option>25,000+</option></select></div>
+</div>
+<div class="cg"><label>Primary diligence question</label><select id="bfFocus">
+<option>Causal validity &amp; cold-start priors (Chief People Scientist)</option>
+<option>DP budget, k-anonymity &amp; Art. 17 erasure (CISO)</option>
+<option>Adverse impact, LL144 audit &amp; Annex III file (General Counsel)</option>
+<option>Metadata allow-list &amp; co-determination (Works Council)</option>
+<option>Retention economics &amp; internal mobility yield (CHRO)</option>
+</select></div>
+<div style="display:flex;gap:11px;flex-wrap:wrap;margin-top:16px"><button class="btn btn-pri" id="bfBtn">Generate diligence pack manifest</button><a class="btn btn-ghost" href="mailto:research@simonglobalresources.com">research@simonglobalresources.com</a></div>
+<div class="formula" id="bfOut" style="display:none;margin-top:14px"></div>
+</div>
+</div></section>
+
+<footer><div class="wrap">
+<div class="cols">
+<div>
+<a class="brand" href="#top" style="margin-bottom:12px"><svg viewBox="0 0 240 240" style="width:30px;height:30px"><use href="#mark"/></svg><span><span class="nm">Simon Global Resources Group</span><small>J.U.L.E.S. HR-OS™ v4.1</small></span></a>
+<p style="font-size:12.8px;color:var(--ink2);max-width:36ch;margin-top:9px">A seed-stage, research-first AI/HR company. Interdisciplinary subject-matter experts and researchers. Detroit, Michigan.</p>
+</div>
+<div><h4>Assurance</h4><a href="#attest">Attestation register</a><a href="#manifest">Works Council manifest</a><a href="#frontier">R&amp;D frontier lab</a><a id="gcFoot">GC compliance dossier</a></div>
+<div><h4>Product</h4><a href="#pillars">HR utility suite</a><a href="#lab">Privacy &amp; fairness lab</a><a href="#twin">Retention twin</a><a href="#connect">HiTL write-back</a></div>
+<div><h4>Contact</h4><a href="mailto:research@simonglobalresources.com">research@simonglobalresources.com</a><a href="mailto:advisory@simonglobalresources.com">advisory@simonglobalresources.com</a><a id="refFoot">Methodology bibliography</a><a href="#compete">Buyer fit guide</a></div>
+</div>
+<div class="legal">
+<div>© 2026 Simon Global Resources Group · All rights reserved.<br>Every hiring recommendation, mobility match, compensation calibration, and retention intervention requires a bonded <b>HiTL</b> cryptographic signature. <b>0 automated adverse actions.</b></div>
+<div style="color:var(--teal)">SGRG · HR-OS v4.1 · EVIDENCE-TIERED</div>
+</div>
+</div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="modal-c">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:11px"><h3 id="modalTitle" style="font-size:21px">—</h3><button class="btn btn-ghost btn-sm" id="modalClose">Close [ESC]</button></div>
+<div id="modalBody" style="font-size:13.5px;color:var(--ink2);line-height:1.68"></div>
+</div></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var PAL=[[45,212,191],[129,140,248],[251,113,133],[251,191,36]];
+function col(i,a){var c=PAL[i%PAL.length];return "rgba("+c[0]+","+c[1]+","+c[2]+","+a+")"}
+function hx(n){var s="";for(var i=0;i<n;i++)s+="0123456789abcdef"[Math.floor(Math.random()*16)];return s}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+/* ---------- theme, clock, reveal ---------- */
+try{var t=localStorage.getItem("sgrg-theme");if(t)document.documentElement.setAttribute("data-theme",t);
+var p=localStorage.getItem("sgrg-persona");if(p)document.documentElement.setAttribute("data-persona",p)}catch(e){}
+$("#themeBtn").addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||"dark",n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("sgrg-theme",n)}catch(e){}drawSpark();drawOracle();drawHG()});
+function tick(){var d=new Date();var e=$("#clock");if(e)e.textContent="SGRG · "+d.toISOString().replace("T"," ").substring(0,19)+" UTC"}
+tick();setInterval(tick,1000);
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.06});
+$$(".rv").forEach(function(e){io.observe(e)});
+
+/* ---------- persona ---------- */
+var FOCUS={
+ chro:{title:"Your view: CHRO & Talent Strategy",body:"Emphasis on retention economics, internal mobility yield, pay-equity calibration, and cold-start causal validity. Security and legal controls remain fully visible — de-emphasised, never hidden.",links:[["#pillars","HR suite"],["#roi","Value model"],["#twin","Retention twin"],["#scorecard","Scorecard"],["#frontier","Employee co-pilot"]]},
+ ciso:{title:"Your view: CISO, Legal & Works Council",body:"Emphasis on attestation gaps, DP budget accounting, k-anonymity rollup, proxy-leakage diagnostics, metadata allow-lists, cryptographic erasure, and the HiTL write-back signature path. Nothing is hidden from the CHRO view either.",links:[["#attest","Attestation register"],["#lab","Privacy lab"],["#manifest","Metadata manifest"],["#connect","HiTL write-back"],["#frontier","ZK / TEE / erasure"]]}
+};
+function setPersona(p){
+ document.documentElement.setAttribute("data-persona",p);
+ try{localStorage.setItem("sgrg-persona",p)}catch(e){}
+ $("#pChro").classList.toggle("on",p==="chro");$("#pCiso").classList.toggle("on",p==="ciso");
+ $("#pChro").setAttribute("aria-pressed",p==="chro");$("#pCiso").setAttribute("aria-pressed",p==="ciso");
+ var f=FOCUS[p];$("#focusTitle").textContent=f.title;$("#focusBody").textContent=f.body;
+ $("#focusLinks").innerHTML=f.links.map(function(l){return '<a href="'+l[0]+'">'+l[1]+' →</a>'}).join("");
+}
+$("#pChro").addEventListener("click",function(){setPersona("chro")});
+$("#pCiso").addEventListener("click",function(){setPersona("ciso")});
+setPersona(document.documentElement.getAttribute("data-persona")||"chro");
+
+/* ---------- modal ---------- */
+function openModal(title,html){$("#modalTitle").textContent=title;$("#modalBody").innerHTML=html;$("#modal").classList.add("on")}
+function closeModal(){$("#modal").classList.remove("on")}
+$("#modalClose").addEventListener("click",closeModal);
+$("#modal").addEventListener("click",function(e){if(e.target===$("#modal"))closeModal()});
+window.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal()});
+
+/* ---------- references ---------- */
+var REFS={
+"SC-2026.01":{t:"Directed & uniform hypergraphs for verifiable human capital attribution",b:"<p><b>Tier 2 · methodology note.</b> Traditional org charts capture single-manager reporting lines and destroy multi-party attribution. Modelling contributions as directed hyperedges e=(T,H,ω) yields bit-identical attribution for promotion, succession, and pay-equity decisions.</p><div class='formula'>σ_d = |E_d| / C(n_d,k) — capability-domain saturation bound</div><p style='margin-top:10px'>Uniform edges bind exactly k observers, making review edges exchangeable — the precondition for lifted inference and for adverse-impact testing that does not depend on which manager happened to review.</p>"},
+"SC-2026.02":{t:"Hierarchical empirical-Bayes shrinkage & Rosenbaum bounds in sparse-policy retention twins",b:"<p><b>Tier 1/2 · methodology note.</b> With n&lt;5 historical policy changes, unshrunk causal estimates are unstable and naïvely suppress to BLANK(). We partially pool toward a DP-protected consortium prior:</p><div class='formula'>τ̂_shrunk = w·τ̂_local + (1−w)·τ̂_prior,  w = n/(n+k)</div><p style='margin-top:10px'>Rosenbaum sensitivity Γ reports the magnitude of unmeasured confounding that would flip the sign of the estimated effect. We refuse to surface a recommendation when Γ_critical falls below the tenant's tolerance.</p><div class='formula warn'>Cold-start estimates are prior-dominated and labelled Tier 1. Prospective validation is mandatory.</div>"},
+"SC-2026.03":{t:"k-anonymity pod rollup and (ε,δ)-DP accounting for employee listening",b:"<p><b>Tier 2 · implemented.</b> Stylometric scrubbing removes lexical idiosyncrasy and named entities locally in Wasm. Small pods (n&lt;k) roll up to the parent division before any aggregate is released. A quarterly Gaussian-mechanism budget with δ=1e-6 hard-stops further queries at ε=1.00.</p><div class='formula'>ε_quarter = Σ ε_query ≤ 1.00 · clip norm 1.0 · rollup until |pod| ≥ k</div>"},
+"SC-2026.04":{t:"Adversarial gradient reversal for residual proxy leakage after PII sharding",b:"<p><b>Tier 1 · controlled benchmark.</b> Removing name, gender, age, ethnicity, and salary history does not remove university prestige, ZIP code, or career-gap duration from the representation. We train proxy adversaries and reverse their gradient into the encoder.</p><div class='formula'>min_θ max_φ L_task(θ) − λ·L_proxy(θ,φ) · accept when I(z;proxy) &lt; 0.012</div><p style='margin-top:10px'>Reported mutual information is measured on a held-out synthetic corpus with known ground-truth proxies. Real-world proxy sets are broader; this is a floor, not a guarantee.</p>"}
+};
+function openAllRefs(){openModal("Methodology bibliography & evidence register",Object.keys(REFS).map(function(k){return "<div style='margin-bottom:16px;padding-bottom:13px;border-bottom:1px solid var(--line)'><b>["+k+"] "+REFS[k].t+"</b>"+REFS[k].b+"</div>"}).join(""))}
+$("#refBtn").addEventListener("click",openAllRefs);
+$("#refFoot").addEventListener("click",openAllRefs);
+document.addEventListener("click",function(e){var b=e.target.closest("[data-ref]");if(!b)return;var r=REFS[b.getAttribute("data-ref")];if(r)openModal(r.t,r.b);else openAllRefs()});
+function gcDossier(){openModal("CHRO & General Counsel compliance dossier",
+"<p><b>1 · Evidence tiering.</b> Every quantitative claim carries Tier 1 (controlled simulation), Tier 2 (implemented/internal backtest), Tier 3 (client out-of-time pilot, NDA), or Tier 4 (third-party attested). We currently publish no Tier 4 items and state this openly.</p>"+
+"<p style='margin-top:10px'><b>2 · Zero automated adverse actions.</b> J.U.L.E.S. is decision support. No hire, termination, promotion, or compensation change executes without an Ed25519-signed approval from a bonded HRBP bound to an AperX commitment hash, a monotonic nonce, and a 15-minute expiry.</p>"+
+"<p style='margin-top:10px'><b>3 · Anti-surveillance allow-list.</b> Email and Slack message bodies, keystrokes, screen/webcam telemetry, and location are denied at the adapter. Only aggregated calendar load, public repo review cadence, and optional consented Wasm pulse are permitted. EU tenants are default-off pending co-determination.</p>"+
+"<p style='margin-top:10px'><b>4 · Erasure on an immutable ledger.</b> Vertex commitments are salted under a customer-managed HSM key. Destroying the salt severs individual linkage instantly while preserving Merkle-root and aggregate audit validity (GDPR Art. 17).</p>"+
+"<p style='margin-top:10px'><b>5 · Runtime fairness invariant.</b> A rolling 30-day monitor trips a governance circuit breaker if any protected subgroup's AIR falls below 0.80, freezing recommendations and notifying CISO/CHRO.</p>"+
+"<div class='formula gold' style='margin-top:14px'>Open gaps: SOC 2 Type II observation window in progress; NYC LL144 independent auditor engagement pending; ISO 27001 certification audit scheduled; Halo2 fairness circuit not yet externally audited.</div>")}
+$("#gcBtn").addEventListener("click",gcDossier);$("#gcFoot").addEventListener("click",gcDossier);
+
+/* ---------- 01 attestation ---------- */
+var ATT=[
+{c:"SOC 2 Type II",n:"SOC 2 Type II",tier:2,status:"Audit-ready · observation window open",sum:"Controls implemented and evidenced; the Type II observation period is in progress. No signed report yet.",scope:"Security, Availability, Confidentiality trust services criteria",art:"Control matrix, policy set, access reviews, change-management logs, incident runbooks",gap:"Independent CPA observation window (min. 6 months) not complete. Type I targeted first.",own:"CISO / external CPA firm",ref:"SC-2026.03"},
+{c:"ISO 27001",n:"ISO/IEC 27001:2022",tier:2,status:"ISMS implemented · cert audit pending",sum:"ISMS, Statement of Applicability, and risk treatment plan exist. Certification audit not yet performed.",scope:"Annex A controls tailored to HR data processing; SoA excludes physical manufacturing controls",art:"ISMS manual, SoA, risk register, internal audit report, management review minutes",gap:"Stage 1 / Stage 2 certification audit scheduled with accredited body.",own:"CISO / accredited registrar",ref:"SC-2026.03"},
+{c:"NYC LL144",n:"NYC Local Law 144 bias audit",tier:2,status:"Audit template ready · auditor pending",sum:"Independent bias-audit methodology, selection-rate computation, and candidate-notice flow are built. The independent auditor engagement is not yet executed.",scope:"AEDT used for hire/promotion decisions affecting NYC residents",art:"Impact-ratio computation by sex, race/ethnicity and intersectional categories; public summary template; 10-business-day candidate notice",gap:"NYC LL144 requires an *independent* auditor. We cannot self-attest. Engagement pending.",own:"General Counsel / independent auditor",ref:"SC-2026.04"},
+{c:"EEOC / OFCCP",n:"Four-fifths adverse-impact testing",tier:3,status:"Runtime invariant · continuously enforced",sum:"AIR is enforced at runtime with a tripping circuit breaker rather than reported annually. This is an architectural property, not an external certification.",scope:"Selection-rate parity across protected subgroups, rolling 30-day windows, intersectional cells with k≥10",art:"Per-subgroup selection rates, AIR computation, breaker incident log, replayable decision commitments",gap:"Not a third-party attestation. OFCCP-style validation studies for specific selection procedures remain client-specific.",own:"Chief People Scientist / GC",ref:"SC-2026.01"},
+{c:"EU AI Act",n:"Annex III high-risk HR documentation",tier:2,status:"Technical file drafted · conformity pending",sum:"Employment is Annex III high-risk. We maintain the technical documentation pack and human-oversight design; conformity assessment is not complete.",scope:"Intended purpose, risk management, data governance, technical documentation, logging, human oversight, accuracy/robustness",art:"Annex IV technical file, FRIA template for deployers, oversight instructions, logging schema, post-market monitoring plan",gap:"Conformity assessment and CE marking pathway depend on final harmonised standards; deployer obligations are shared.",own:"General Counsel / CISO",ref:"SC-2026.02"}
+];
+var attSel=0,attOnlyT4=false;
+function renderAtt(){
+ var list=attOnlyT4?ATT.filter(function(a){return a.tier===4}):ATT;
+ $("#attFilterNote").style.display=attOnlyT4?"block":"none";
+ var g=$("#attGrid");
+ if(!list.length){g.innerHTML='<div class="card" style="grid-column:1/-1;text-align:center"><p style="font-size:14px;color:var(--ink2)">No Tier 4 items exist yet. This empty state is intentional.</p></div>';$("#attDetail").style.display="none";return}
+ $("#attDetail").style.display="grid";
+ g.innerHTML=list.map(function(a,i){return '<div class="att'+(i===attSel?" on":"")+'" data-att="'+i+'"><div class="code-l">'+esc(a.c)+'</div><h4>'+esc(a.n)+'</h4><p>'+esc(a.sum)+'</p><div style="margin-top:11px;display:flex;gap:6px;flex-wrap:wrap"><span class="tier t'+a.tier+'">Tier '+a.tier+'</span><span class="chip">'+esc(a.status.split("·")[0].trim())+'</span></div></div>'}).join("");
+ $$("#attGrid .att").forEach(function(el){el.addEventListener("click",function(){attSel=parseInt(el.getAttribute("data-att"),10);renderAtt()})});
+ var a=list[attSel]||list[0];
+ $("#attDetail").innerHTML='<div class="lab-h"><div><div class="mono" style="font-size:9.5px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase">Attestation detail</div><h3 style="font-size:22px;margin-top:5px">'+esc(a.n)+'</h3></div><span class="tier t'+a.tier+'">Tier '+a.tier+'</span></div>'+
+ '<dl class="kv"><dt>Readiness status</dt><dd>'+esc(a.status)+'</dd><dt>Scope</dt><dd>'+esc(a.scope)+'</dd><dt>Artefacts available</dt><dd>'+esc(a.art)+'</dd><dt style="color:var(--crimson)">Residual gap</dt><dd>'+esc(a.gap)+'</dd><dt>Accountable owner</dt><dd>'+esc(a.own)+'</dd></dl>'+
+ '<div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-ghost btn-sm" data-ref="'+a.ref+'">Related methodology</button><a class="btn btn-pri btn-sm" href="#contact">Request artefacts under NDA</a></div>';
+}
+$("#attAll").addEventListener("click",function(){attOnlyT4=false;attSel=0;$("#attAll").classList.add("on");$("#attT4").classList.remove("on");renderAtt()});
+$("#attT4").addEventListener("click",function(){attOnlyT4=true;attSel=0;$("#attT4").classList.add("on");$("#attAll").classList.remove("on");renderAtt()});
+renderAtt();
+
+/* ---------- ROI ---------- */
+function money(v){return v>=1e6?"$"+(v/1e6).toFixed(2)+"M":"$"+Math.round(v/1e3)+"K"}
+function roi(){
+ var hc=+$("#hc").value,tn=+$("#turn").value,rp=+$("#repl").value||45000,ag=+$("#agency").value||15500,rd=+$("#red").value,up=+$("#upl").value;
+ $("#hcVal").textContent=hc.toLocaleString();$("#turnVal").textContent=tn+"%";$("#redVal").textContent=rd+"%";$("#uplVal").textContent=up+"%";
+ var saved=Math.round(hc*(tn/100)*(rd/100));
+ $("#oAttr").textContent=money(saved*rp);
+ $("#oMob").textContent=money(Math.round(hc*0.08*(up/100)*ag));
+ $("#oHeads").textContent=saved.toLocaleString();
+ $("#oHours").textContent=Math.round(hc*2.56*(rd/30||0)).toLocaleString();
+}
+["hc","turn","repl","agency","red","upl"].forEach(function(id){var e=$("#"+id);if(e)e.addEventListener("input",roi)});roi();
+
+/* ---------- radar ---------- */
+var radarRS=function(){};
+(function(){
+ var cv=$("#radar");if(!cv)return;var ctx=cv.getContext("2d"),W,H,D=Math.min(window.devicePixelRatio||1,2),red=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ var stars=[],sats=[],sw=0,m={x:-999,y:-999};
+ var names=["TA · two-stage debiasing","Retention · Rosenbaum Γ","Mobility · opt-in gated","Rewards · TEE join","Succession · allow-listed","Safe-Harbor · k-anon + DP"];
+ function rs(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*D;cv.height=H*D;ctx.setTransform(D,0,0,D,0,0);
+  stars=[];for(var i=0;i<80;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,p:Math.random()*6.28,s:.3+Math.random()});
+  sats=[{g:0,a:0,v:.009,c:0,s:5,l:names[0]},{g:0,a:2.4,v:.009,c:2,s:4.4,l:names[1]},{g:1,a:1.2,v:-.006,c:1,s:5.2,l:names[2]},{g:1,a:4,v:-.006,c:3,s:4.6,l:names[3]},{g:2,a:2.8,v:.005,c:0,s:5.2,l:names[4]},{g:2,a:5.6,v:.005,c:1,s:4.4,l:names[5]}]}
+ radarRS=rs;rs();
+ cv.addEventListener("mousemove",function(e){var r=cv.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});
+ cv.addEventListener("mouseleave",function(){m.x=-999;$("#radarHud").textContent="HR TELEMETRY FIELD · 6 GOVERNED VECTORS · HOVER TO INSPECT"});
+ function frame(){
+  ctx.clearRect(0,0,W,H);var cx=W/2,cy=H/2,b=Math.min(W,H)*.41;
+  var g=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.max(W,H)*.72);g.addColorStop(0,"#101B38");g.addColorStop(.55,"#0A1022");g.addColorStop(1,"#060913");ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  stars.forEach(function(s){var tw=red?1:(.4+.6*Math.abs(Math.sin(s.p)));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);ctx.fillStyle="rgba(230,236,245,"+(.45*tw)+")";ctx.fill();s.p+=.02*s.s});
+  ctx.setLineDash([4,4]);[.5,.75,1].forEach(function(f,i){ctx.strokeStyle=i===1?"rgba(45,212,191,.34)":"rgba(129,140,248,.26)";ctx.beginPath();ctx.arc(cx,cy,b*f,0,7);ctx.stroke()});ctx.setLineDash([]);
+  ctx.strokeStyle="rgba(230,236,245,.08)";ctx.beginPath();ctx.moveTo(cx-b-16,cy);ctx.lineTo(cx+b+16,cy);ctx.moveTo(cx,cy-b-16);ctx.lineTo(cx,cy+b+16);ctx.stroke();
+  sw+=.007;ctx.save();ctx.translate(cx,cy);ctx.rotate(sw);var sg=ctx.createLinearGradient(0,0,b,0);sg.addColorStop(0,"rgba(45,212,191,0)");sg.addColorStop(1,"rgba(45,212,191,.16)");ctx.fillStyle=sg;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,b,-.5,0);ctx.closePath();ctx.fill();ctx.restore();
+  var rings=[.5,.75,1],hov=null,pts=[];
+  sats.forEach(function(s){s.a+=s.v;var rr=b*rings[s.g],x=cx+Math.cos(s.a)*rr,y=cy+Math.sin(s.a)*rr;pts.push([x,y]);
+   var h=Math.hypot(m.x-x,m.y-y)<22;if(h)hov=s;
+   ctx.beginPath();ctx.arc(x,y,h?s.s+8:s.s+3,0,7);ctx.fillStyle=col(s.c,h?.38:.16);ctx.fill();
+   ctx.beginPath();ctx.arc(x,y,h?s.s+2:s.s,0,7);ctx.fillStyle=col(s.c,.95);ctx.fill()});
+  ctx.strokeStyle="rgba(129,140,248,.18)";ctx.lineWidth=1;pts.forEach(function(p){ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(p[0],p[1]);ctx.stroke()});
+  if(hov)$("#radarHud").textContent=hov.l+" · governed · AIR 1.00×";
+  var ng=ctx.createRadialGradient(cx-4,cy-4,0,cx,cy,18);ng.addColorStop(0,"#FFF");ng.addColorStop(.45,"#2DD4BF");ng.addColorStop(1,"#4F46E5");ctx.beginPath();ctx.arc(cx,cy,15,0,7);ctx.fillStyle=ng;ctx.fill();
+  if(!red)requestAnimationFrame(frame)}
+ requestAnimationFrame(frame);
+})();
+
+/* ---------- Safe-Harbor ---------- */
+var SAMPLES=[
+"Honestly, since the Q3 release crunch in our Global Supply Chain pod, Director Marcus has been messaging us at 11pm and our senior analysts are completely burned out. Two of my teammates are already interviewing elsewhere because comp calibration was delayed again.",
+"Our internal transfer process between Regional Operations and Product Analytics takes way too many manager sign-offs. People want to grow here but it feels easier to apply externally than transfer internally.",
+"The new structured peer-mentorship programme for incoming analysts has been a genuine improvement — a dedicated cross-team buddy cut onboarding confusion substantially."
+],sIdx=0,epsSpent=0.70;
+function dpRender(){
+ var pct=Math.min(100,epsSpent*100);
+ $("#dpVal").textContent="ε "+epsSpent.toFixed(2)+" / 1.00";
+ $("#dpVal").style.color=epsSpent>=1?"var(--crimson)":(epsSpent>.85?"var(--gold)":"var(--teal)");
+ var b=$("#dpBar");b.style.width=pct+"%";b.classList.toggle("hot",epsSpent>.85);
+}
+function sanitize(){
+ var raw=$("#rawVoice").value.trim(),pod=+$("#pod").value,k=+$("#kThresh").value;
+ $("#podVal").textContent=pod;
+ if(!raw){$("#shOut").textContent="No submission.";return}
+ if(epsSpent>=1){
+  $("#kOut").className="formula warn";$("#kOut").textContent="DP BUDGET EXHAUSTED · ε 1.00 / 1.00. Query refused. No further aggregate released this quarter.";
+  $("#shOut").textContent=JSON.stringify({status:"REFUSED",reason:"quarterly_dp_budget_exhausted",epsilon_spent:1.0,delta:1e-6,next_reset:"quarter_boundary",note:"Refusal is a hard stop, not a warning. Budget cannot be borrowed from the next quarter."},null,2);
+  $("#shHash").textContent="SVID · refused";return}
+ epsSpent=Math.min(1,+(epsSpent+0.15).toFixed(2));dpRender();
+ var rolled=pod<k,unit=rolled?"Division · Global Operations (n=142)":"Pod · Supply Chain Analytics (n="+pod+")";
+ var h="ANON-"+hx(6).toUpperCase();$("#shHash").textContent="SVID · "+h;
+ $("#kOut").className=rolled?"formula gold":"formula";
+ $("#kOut").innerHTML=rolled
+  ? "<b>k-ANONYMITY ROLLUP TRIGGERED</b><br>Submitting pod n="+pod+" &lt; k="+k+". Escalating: pod ("+pod+") → team (23) → <b>division (142)</b>. Released unit satisfies k≥"+k+". Suppressed cells: 3."
+  : "<b>k-ANONYMITY SATISFIED</b><br>Pod n="+pod+" ≥ k="+k+". No rollup required. Released at pod granularity.";
+ var crunch=/crunch|11pm|burned out|interviewing|comp/i.test(raw),fric=/transfer|sign-off|internally/i.test(raw);
+ var prop=crunch?"Sustained after-hours communication load and delayed compensation calibration are associated with elevated flight risk among senior contributors. Recommend HRBP workload review and Total Rewards audit."
+  :(fric?"Multi-layer approval friction in internal lateral transfers is suppressing internal mobility. Recommend simplifying marketplace governance.":"Structured cross-team mentorship is associated with faster onboarding. Recommend evaluating broader rollout.");
+ $("#shOut").textContent=JSON.stringify({
+  vertex_type:"SAFE_HARBOR_SIGNAL",svid:"spiffe://sgrg/ns/safeharbor/"+h,
+  stage_1_stylometric_scrub:{removed:["named_entities","manager_identifiers","pod_identifiers","syntax_cadence","timestamps","employee_ids"],runtime:"local_wasm",egress:"aggregate_only"},
+  stage_2_k_anonymity:{k_threshold:k,submitted_pod_n:pod,rollup_applied:rolled,rollup_chain:rolled?["pod("+pod+")","team(23)","division(142)"]:["pod("+pod+")"],released_unit:unit,suppressed_cells:rolled?3:0},
+  stage_3_differential_privacy:{mechanism:"gaussian",clip_norm:1.0,delta:1e-6,epsilon_query:0.15,epsilon_quarter_spent:epsSpent,epsilon_quarter_cap:1.00},
+  routed_function:crunch?"HRBP Retention & Total Rewards":(fric?"Internal Talent Mobility":"L&D / Onboarding"),
+  sanitized_proposition:prop,
+  governance:{retaliation_lock:true,individual_attribution:false,requires_hitl_signature:true}
+ },null,2);
+}
+$("#sanitizeBtn").addEventListener("click",sanitize);
+$("#sampleBtn").addEventListener("click",function(){sIdx=(sIdx+1)%SAMPLES.length;$("#rawVoice").value=SAMPLES[sIdx];sanitize()});
+$("#pod").addEventListener("input",function(){$("#podVal").textContent=$("#pod").value});
+$("#kThresh").addEventListener("change",sanitize);
+dpRender();sanitize();
+
+/* ---------- CV two-stage ---------- */
+var PROX=[{n:"University prestige",base:.184},{n:"ZIP / geography",base:.141},{n:"Career gap duration",base:.097}];
+var vecTimer=null;
+function stage1(){
+ var f=["Name","Gender","Age","Ethnicity","Prior_Salary_History"];
+ $("#stage1").innerHTML=f.map(function(x){return '<div style="color:var(--teal)">✓ '+x+' <span style="color:var(--muted)">— shard removed</span></div>'}).join("");
+}
+function renderProx(vals,done){
+ $("#stage2").innerHTML=PROX.map(function(p,i){
+  var v=vals[i],ok=v<0.012;
+  return '<div class="mi-row"><div><div>'+p.n+'</div><div class="mi-bar"><i class="'+(ok?"clean":"")+'" style="width:'+Math.min(100,v/0.2*100)+'%"></i></div></div><div style="text-align:right;color:'+(ok?"var(--teal)":"var(--crimson)")+'">'+v.toFixed(3)+'</div></div>';
+ }).join("");
+}
+function vectorize(){
+ if(vecTimer)clearInterval(vecTimer);
+ stage1();
+ var lam=+$("#lam").value/100,head=$("#advHead").value;
+ var targets=PROX.map(function(p,i){
+  if(head==="prestige"&&i>0)return p.base*0.92;
+  if(head==="zip"&&i!==1)return p.base*0.92;
+  var floor=lam<=0?p.base*0.88:0.004+ (1-lam)*0.055;
+  return Math.max(0.003,floor);
+ });
+ var cur=PROX.map(function(p){return p.base}),ep=0;
+ $("#miBadge").textContent="running";$("#miBadge").className="chip g";
+ renderProx(cur,false);
+ vecTimer=setInterval(function(){
+  ep++;$("#epoch").textContent="epoch "+ep+"/8";
+  cur=cur.map(function(v,i){return v+(targets[i]-v)*0.42});
+  renderProx(cur,ep>=8);
+  if(ep>=8){
+   clearInterval(vecTimer);vecTimer=null;
+   var mx=Math.max.apply(null,cur),pass=mx<0.012;
+   $("#miBadge").textContent=pass?"PASS · MI < 0.012":"FAIL · proxy leakage";
+   $("#miBadge").className="chip "+(pass?"t":"c");
+   var adv=(0.5+mx*1.9).toFixed(3);
+   $("#miSummary").className="formula"+(pass?"":" warn");
+   $("#miSummary").innerHTML="<b>max I(z ; proxy) = "+mx.toFixed(4)+"</b> · adversary AUC ≈ "+adv+" (chance 0.500) · λ = "+lam.toFixed(2)+"<br>"+
+    (pass?"Slate eligible for uniform k=4 ranking. Diagnostic attached to the AperX commitment."
+         :"RANKING REFUSED. Representation still leaks a protected proxy. Increase λ or expand the adversary head. This is the v4.0 failure mode.");
+  }
+ },260);
+}
+$("#vecBtn").addEventListener("click",vectorize);
+$("#lam").addEventListener("input",function(){$("#lamVal").textContent=(+$("#lam").value/100).toFixed(2)});
+$("#tabVoice").addEventListener("click",function(){$("#tabVoice").classList.add("on");$("#tabSkill").classList.remove("on");$("#pVoice").classList.add("on");$("#pSkill").classList.remove("on")});
+$("#tabSkill").addEventListener("click",function(){$("#tabSkill").classList.add("on");$("#tabVoice").classList.remove("on");$("#pSkill").classList.add("on");$("#pVoice").classList.remove("on");if(!$("#stage1").innerHTML)vectorize()});
+stage1();renderProx(PROX.map(function(p){return p.base}),false);
+
+/* ---------- manifest ---------- */
+var MF_OK=[
+ {n:"Aggregated calendar load",d:"Pod-level meeting-hours density. No titles, no attendees, no content. 90-day retention.",eu:true},
+ {n:"Public repo review cadence",d:"Review counts and latency on public/internal-source repositories. No diff content, no comment bodies.",eu:true},
+ {n:"Optional Wasm wellbeing pulse",d:"Explicit per-employee consent, revocable. Local aggregation. Force-disabled under EU WC mode until scheduled.",eu:false}
+];
+var MF_NO=[
+ {n:"Email & Slack message bodies",d:"Denied at adapter. No OAuth scope requested. Cannot be enabled by configuration."},
+ {n:"Keystroke / input telemetry",d:"Denied. No endpoint agent exists in the product."},
+ {n:"Screen capture / webcam",d:"Denied. No capability compiled into the client."},
+ {n:"GPS / location tracking",d:"Denied. Location is not a collected field."},
+ {n:"Individual performance surveillance",d:"Denied. Signals are pod-aggregated with k≥10 before release."},
+ {n:"Protected-attribute inference",d:"Denied. Ethnicity, health, and union membership are never inferred from behaviour."}
+];
+var mfFilter="all";
+function renderMF(){
+ var eu=$("#wcMode").checked;
+ var ok=MF_OK.filter(function(x){return !eu||x.eu});
+ $("#mfOk").style.display=(mfFilter==="no")?"none":"block";
+ $("#mfNo").style.display=(mfFilter==="ok")?"none":"block";
+ $("#mfOk").innerHTML=ok.map(function(x){return '<div class="mf-item ok"><div class="sig">✓</div><div><b>'+esc(x.n)+'</b><span>'+esc(x.d)+'</span></div></div>'}).join("")+
+  (eu?'<div class="mf-item no"><div class="sig">⏸</div><div><b>Optional Wasm pulse — suspended</b><span>EU Works Council mode active. Requires explicit schedule in the co-determination agreement.</span></div></div>':"");
+ $("#mfNo").innerHTML=MF_NO.map(function(x){return '<div class="mf-item no"><div class="sig">✕</div><div><b>'+esc(x.n)+'</b><span>'+esc(x.d)+'</span></div></div>'}).join("");
+ $("#mfCountOk").textContent=ok.length;$("#mfCountNo").textContent=MF_NO.length+(eu?1:0);
+ $("#mfState").className="formula"+(eu?"":" gold");
+ $("#mfState").innerHTML=eu
+  ? "<b>EU WORKS COUNCIL MODE ACTIVE</b> · ingestion default-off until countersigned agreement · "+ok.length+" allowed signals · "+(MF_NO.length+1)+" denied · retention 90d · purpose limitation enforced at adapter"
+  : "<b>STANDARD MODE</b> · "+ok.length+" allowed signals including consented pulse · "+MF_NO.length+" hard-denied · retention 90d";
+}
+$("#wcMode").addEventListener("change",renderMF);
+$$("[data-mf]").forEach(function(b){b.addEventListener("click",function(){mfFilter=b.getAttribute("data-mf");$$("[data-mf]").forEach(function(x){x.classList.toggle("on",x===b)});renderMF()})});
+renderMF();
+
+/* ---------- retention twin ---------- */
+var POL={weather:{l:"BURNOUT WEATHER SHIELD",o:.77,n:.85,v:.04},corridor:{l:"MOBILITY CORRIDOR",o:.75,n:.82,v:.05},hidden:{l:"PAY EQUITY & MENTOR ELEVATION",o:.79,n:.84,v:.05},reorg:{l:"POST-MERGER CONSOLIDATION",o:.68,n:.58,v:.16}};
+var regime="rich";
+function drawOracle(){
+ var cv=$("#oracle");if(!cv)return;var ctx=cv.getContext("2d"),D=Math.min(window.devicePixelRatio||1,2),W=cv.clientWidth,H=cv.clientHeight;
+ cv.width=W*D;cv.height=H*D;ctx.setTransform(D,0,0,D,0,0);
+ ctx.fillStyle="#060913";ctx.fillRect(0,0,W,H);
+ var p=POL[$("#pol").value],I=+$("#inten").value/100,HZ=+$("#hor").value,FL=+$("#floor").value/100,G=+$("#gam").value/100;
+ $("#intVal").textContent=Math.round(I*100)+"%";$("#horVal").textContent=HZ+" days";$("#floorVal").textContent=FL.toFixed(2);$("#gamVal").textContent=G.toFixed(2);
+ $("#simBadge").textContent=p.l;
+ var n,ess,w,gam,nec,tier;
+ if(regime==="rich"){n=14;ess=14;w=.92;gam=1.85-I*p.v*1.6;nec=clamp(p.n-I*p.v*.5,.38,.95);tier="T1"}
+ else{n=2;ess=2;w=+(n/(n+3.4)).toFixed(2);gam=1.32-I*p.v*1.1;nec=clamp(p.n*.62+w*.30-I*p.v*.35,.35,.92);tier="T1 prior"}
+ var oei=clamp(p.o+(I-.5)*.12*($("#pol").value==="reorg"?-.6:1),.45,.96);
+ $("#oOei").textContent=oei.toFixed(2);$("#oNec").textContent=nec.toFixed(2);$("#oGam").textContent=gam.toFixed(2);
+ $("#oShr").textContent=w.toFixed(2);$("#oEss").textContent=ess;$("#oTier").textContent=tier;
+ var passN=nec>=FL,passG=gam>=G,ok=passN&&passG;
+ var gate=$("#gate");
+ gate.className="formula"+(ok?"":" warn");
+ gate.innerHTML=ok?"✓ GOVERNED · N="+nec.toFixed(2)+" ≥ "+FL.toFixed(2)+" and Γcrit="+gam.toFixed(2)+" ≥ "+G.toFixed(2)+". Eligible for bonded HiTL signature."
+  :"⚠ SUPPRESSED → BLANK() · "+(!passN?"N="+nec.toFixed(2)+" &lt; floor "+FL.toFixed(2)+". ":"")+(!passG?"Γcrit="+gam.toFixed(2)+" &lt; tolerance "+G.toFixed(2)+".":"")+" No recommendation surfaced.";
+ $("#ebForm").innerHTML=regime==="rich"
+  ? "<b>Rich regime.</b> Local estimate dominates: w = n/(n+k) = 14/(14+1.2) ≈ 0.92. Γcrit "+gam.toFixed(2)+" means an unmeasured confounder would need to change treatment odds by "+gam.toFixed(2)+"× to flip the sign."
+  : "<b>Cold-start regime.</b> τ̂ = w·τ̂_local + (1−w)·τ̂_prior, w = n/(n+k) = 2/(2+3.4) = "+w.toFixed(2)+". Prior pooled from a DP-protected consortium (ε 0.30 contributed). Γcrit "+gam.toFixed(2)+".";
+ var cn=$("#coldNote");
+ if(regime==="cold"){cn.style.display="block";cn.innerHTML="<b>Prior-dominated estimate.</b> "+Math.round((1-w)*100)+"% of this estimate comes from the consortium prior, not your data. Labelled Tier 1. Naïve unshrunk N would be "+(p.n*.62).toFixed(2)+" → would have suppressed to BLANK(). Shrinkage recovers usability without hiding the assumption. Prospective 60-day shadow validation is mandatory before any action."}
+ else cn.style.display="none";
+ $("#regimeNote").textContent=regime==="rich"?"Rich regime assumes ≥10 historical policy changes with usable variation. Most 1,000–5,000 person employers do not have this.":"Cold-start is the default for mid-market tenants. We would rather show a widened, prior-dominated interval than a confident point estimate.";
+ ctx.strokeStyle="rgba(241,244,249,.07)";ctx.lineWidth=1;for(var g=1;g<4;g++){var gy=H*g/4;ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke()}
+ var N=20,mean=[],up=[],lo=[],s0=.69,spread=p.v*(regime==="cold"?1.75:1)*(.4+I*.7);
+ for(var i=0;i<=N;i++){var t=i/N,x=24+t*(W-48),c=s0+(oei-s0)*Math.pow(t,.82)+Math.sin(t*6.28)*.012,sp=spread*(.4+t*.9);
+  mean.push([x,H-24-(c-.35)/.65*(H-48)]);up.push([x,H-24-(Math.min(.98,c+sp)-.35)/.65*(H-48)]);lo.push([x,H-24-(Math.max(.36,c-sp)-.35)/.65*(H-48)])}
+ ctx.beginPath();up.forEach(function(q,i){i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1])});for(var j=lo.length-1;j>=0;j--)ctx.lineTo(lo[j][0],lo[j][1]);ctx.closePath();
+ ctx.fillStyle=ok?"rgba(45,212,191,.18)":"rgba(244,63,94,.18)";ctx.fill();
+ ctx.beginPath();mean.forEach(function(q,i){i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1])});ctx.strokeStyle=ok?"#2DD4BF":"#F43F5E";ctx.lineWidth=2.4;ctx.stroke();
+ if(regime==="cold"){ctx.setLineDash([5,4]);ctx.beginPath();mean.forEach(function(q,i){var y=q[1]+(1-w)*22;i?ctx.lineTo(q[0],y):ctx.moveTo(q[0],y)});ctx.strokeStyle="rgba(251,191,36,.7)";ctx.lineWidth=1.4;ctx.stroke();ctx.setLineDash([])}
+ ctx.fillStyle="rgba(241,244,249,.7)";ctx.font="10px ui-monospace, monospace";
+ ctx.fillText("t=0 · 0.69",24,H-8);ctx.fillText("t=+"+HZ+"d · "+oei.toFixed(2),W-130,H-8);
+ if(regime==="cold")ctx.fillText("dashed = unshrunk local",24,16);
+}
+$$("[data-reg]").forEach(function(b){b.addEventListener("click",function(){regime=b.getAttribute("data-reg");$$("[data-reg]").forEach(function(x){x.classList.toggle("on",x===b)});drawOracle()})});
+["pol","inten","hor","floor","gam"].forEach(function(id){$("#"+id).addEventListener("input",drawOracle)});
+$("#runSim").addEventListener("click",drawOracle);
+
+/* ---------- scorecard ---------- */
+var MET=[["WRI","Retention resilience",.76,"▲ 0.04",[.62,.64,.65,.67,.68,.69,.70,.71,.72,.73,.74,.74,.75,.76,.76]],
+["IMR","Internal mobility",.72,"▲ 0.05",[.54,.56,.58,.60,.61,.63,.64,.66,.67,.68,.69,.70,.71,.71,.72]],
+["PEI","Pay equity index",.99,"▲ 0.02",[.94,.95,.95,.96,.96,.97,.97,.98,.98,.98,.99,.99,.99,.99,.99]],
+["HPUR","Potential utilisation",.68,"▲ 0.04",[.52,.54,.55,.57,.58,.60,.61,.62,.63,.64,.65,.66,.67,.67,.68]],
+["KLS","Knowledge liquidity",.71,"▲ 0.03",[.58,.59,.61,.62,.63,.64,.65,.66,.67,.68,.69,.69,.70,.71,.71]],
+["LLR","Leadership bench",.75,"▲ 0.02",[.64,.65,.66,.68,.69,.70,.71,.71,.72,.73,.73,.74,.74,.75,.75]],
+["OEI","Org evolution index",.74,"▲ 0.03",[.56,.58,.60,.62,.63,.65,.66,.67,.69,.70,.71,.72,.73,.73,.74]]],mSel=6;
+function renderTiles(){
+ $("#tiles").innerHTML=MET.map(function(m,i){return '<div class="tile'+(i===mSel?" on":"")+'" data-m="'+i+'"><div class="k">'+m[0]+' · '+m[1]+'</div><div class="v">'+m[2].toFixed(2)+'</div><div class="d '+(m[3][0]==="▲"?"up":"dn")+'">'+m[3]+'</div></div>'}).join("");
+ $$("#tiles .tile").forEach(function(t){t.addEventListener("click",function(){mSel=+t.getAttribute("data-m");$("#sparkTitle").textContent=MET[mSel][1]+" ("+MET[mSel][0]+") · trailing 90d";renderTiles();drawSpark()})});
+}
+function drawSpark(){
+ var cv=$("#spark");if(!cv)return;var ctx=cv.getContext("2d"),D=Math.min(window.devicePixelRatio||1,2),W=cv.clientWidth,H=cv.clientHeight;
+ cv.width=W*D;cv.height=H*D;ctx.setTransform(D,0,0,D,0,0);ctx.clearRect(0,0,W,H);
+ var d=MET[mSel][4];
+ ctx.beginPath();d.forEach(function(v,i){var x=i/(d.length-1)*W,y=H-10-(v-.45)/.55*(H-24);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();
+ var g=ctx.createLinearGradient(0,0,W,0);g.addColorStop(0,"rgba(45,212,191,.28)");g.addColorStop(1,"rgba(99,102,241,.28)");ctx.fillStyle=g;ctx.fill();
+ ctx.beginPath();d.forEach(function(v,i){var x=i/(d.length-1)*W,y=H-10-(v-.45)/.55*(H-24);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
+ var l=ctx.createLinearGradient(0,0,W,0);l.addColorStop(0,"#2DD4BF");l.addColorStop(1,"#6366F1");ctx.strokeStyle=l;ctx.lineWidth=2.2;ctx.stroke();
+}
+var DEC=[
+{t:"Internal mobility slate · 3 analysts → Principal Ops",n:.88,s:"Approved",h:"0x94A1..HR01",r:"Uniform k=4 verified 0.93 capability adjacency. Proxy MI 0.009. Requires HRBP signature before write-back."},
+{t:"Burnout shield · Supply Chain pod (2-sprint buffer)",n:.84,s:"Approved",h:"0x3C7F..HR02",r:"Aggregated calendar load +38% with PTO deferral. Pod rolled up to division for k-anonymity. No individual attribution."},
+{t:"Post-merger consolidation · EMEA & NA Finance",n:.54,s:"HiTL Review",h:"0x7B02..HR03",r:"Π 0.82 vs N 0.54 divergence exceeds threshold; Γcrit 1.18 below tolerance. Escalated to CHRO and Works Council."},
+{t:"Pay-equity band adjustment · 5 hidden mentors",n:.91,s:"Approved",h:"0xF120..HR04",r:"TEE-joined payroll and public review cadence. Unexplained residual 0.3%. Aggregate-only egress verified by attestation."}];
+function renderDec(){
+ $("#decCount").textContent=DEC.length+" active";
+ $("#decBody").innerHTML=DEC.map(function(d,i){return '<tr class="click" data-d="'+i+'"><td>'+esc(d.t)+'</td><td class="num">'+d.n.toFixed(2)+'</td><td><span class="chip '+(d.s==="Approved"?"t":"c")+'">'+esc(d.s)+'</span></td></tr>'}).join("");
+ $$("#decBody tr").forEach(function(r){r.addEventListener("click",function(){decModal(+r.getAttribute("data-d"))})});
+}
+function decModal(i){
+ var d=DEC[i];if(!d)return;
+ openModal("Governed decision audit · "+d.h,
+ "<p><b>Proposal:</b> "+esc(d.t)+"</p><p style='margin-top:8px'><b>AperX commitment:</b> <span class='mono'>"+d.h+"</span> · <b>Necessity N:</b> <span class='mono'>"+d.n.toFixed(2)+"</span></p><p style='margin-top:8px'><b>Rationale:</b> "+esc(d.r)+"</p><div class='formula'>Status "+esc(d.s)+" · bonded HiTL protocol · 0 automated adverse actions</div><div style='display:flex;gap:9px;margin-top:16px;flex-wrap:wrap'><button class='btn btn-pri btn-sm' id='dApprove'>Approve with bonded signature</button><button class='btn btn-ghost btn-sm' id='dEsc'>Escalate to Works Council</button></div>");
+ $("#dApprove").addEventListener("click",function(){DEC[i].s="Approved";renderDec();closeModal()});
+ $("#dEsc").addEventListener("click",function(){DEC[i].s="HiTL Review";renderDec();closeModal()});
+}
+$("#commitSim").addEventListener("click",function(){
+ var nec=+$("#oNec").textContent,fl=+$("#floor").value/100,gm=+$("#gam").value/100,gc=+$("#oGam").textContent;
+ var ok=nec>=fl&&gc>=gm;
+ DEC.unshift({t:"Twin proposal · "+POL[$("#pol").value].l+" ("+regime+" regime)",n:nec,s:ok?"Approved":"HiTL Review",h:"0x"+hx(4).toUpperCase()+"..SGRG",r:"Committed from counterfactual sandbox. Γcrit "+gc.toFixed(2)+", shrinkage w "+$("#oShr").textContent+", evidence tier "+$("#oTier").textContent+"."});
+ renderDec();$("#gate").innerHTML="✓ COMMITTED to governed scorecard ledger · "+(ok?"eligible for signature":"suppressed, routed to HiTL");
+});
+function dl(n,c,m){var b=new Blob([c],{type:m}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=n;document.body.appendChild(a);a.click();setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(u)},200)}
+$("#expCsv").addEventListener("click",function(){
+ var r=["Metric_Code,Metric_Name,Score,Delta_90D,Evidence_Tier,AIR_Invariant_Enforced"];
+ MET.forEach(function(m){r.push(m[0]+',"'+m[1]+'",'+m[2]+',"'+m[3]+'",TIER1_SIMULATION,TRUE')});
+ dl("SGRG_HROS_v41_scorecard.csv",r.join("\n"),"text/csv")});
+$("#expJson").addEventListener("click",function(){dl("SGRG_HROS_v41_audit.json",JSON.stringify({product:"J.U.L.E.S. HR-OS v4.1",ledger:"AperX",exported:new Date().toISOString(),evidence_policy:"Tier1 simulation unless stated",metrics:MET.map(function(m){return{code:m[0],name:m[1],value:m[2],tier:1}}),decisions:DEC,automated_adverse_actions:0},null,2),"application/json")});
+renderTiles();renderDec();
+
+/* ---------- hypergraph ---------- */
+var HG={directed:{n:"Directed · attribution",d:"Which mentors, contributors, and skills jointly produced an outcome.",f:"e = (T_contributors, H_outcome, ω_impact)",c:0,s:.429},
+uniform:{n:"Uniform · unbiased evaluation",d:"Every review edge binds exactly k=4 observers, eliminating single-manager bias.",f:"|e| = 4 observers · AIR invariant 1.00×",c:1,s:.571},
+pseudo:{n:"Pseudo · mentorship lineage",d:"Multiset edges preserve repeated coaching contributions rather than deduplicating them.",f:"multiplicity = mentorship_weight",c:2,s:.643},
+complete:{n:"Complete · skill saturation",d:"σ_d measures cross-training depth and bus-factor resilience across a capability domain.",f:"σ_d = |E_d| / C(n_d, k)",c:3,s:.964}},hgM="directed",act=[1,1,1,1,1,1,1,1],hgP=[];
+function drawHG(){
+ var cv=$("#hg");if(!cv)return;var ctx=cv.getContext("2d"),D=Math.min(window.devicePixelRatio||1,2),W=cv.clientWidth,H=cv.clientHeight;
+ cv.width=W*D;cv.height=H*D;ctx.setTransform(D,0,0,D,0,0);ctx.fillStyle="#060913";ctx.fillRect(0,0,W,H);
+ var cx=W/2,cy=H/2,N=8,R=Math.min(W,H)*.33,c=HG[hgM].c;hgP=[];
+ for(var i=0;i<N;i++){var a=i/N*6.283-1.5708;hgP.push([cx+Math.cos(a)*R,cy+Math.sin(a)*R])}
+ ctx.strokeStyle=col(c,.14);ctx.lineWidth=1;
+ for(var p=0;p<N;p++){if(!act[p])continue;for(var q=p+1;q<N;q++){if(!act[q])continue;ctx.beginPath();ctx.moveTo(hgP[p][0],hgP[p][1]);ctx.lineTo(hgP[q][0],hgP[q][1]);ctx.stroke()}}
+ function poly(ix,al){var v=ix.filter(function(k){return act[k]});if(v.length<2)return;ctx.beginPath();v.forEach(function(k,j){var z=hgP[k];j?ctx.lineTo(z[0],z[1]):ctx.moveTo(z[0],z[1])});ctx.closePath();ctx.fillStyle=col(c,al);ctx.fill();ctx.strokeStyle=col(c,.9);ctx.lineWidth=1.6;ctx.stroke()}
+ if(hgM==="directed"){poly([0,1,3],.15);poly([4,5,6],.15)}
+ else if(hgM==="uniform"){poly([0,2,4,6],.16);poly([1,3,5,7],.12)}
+ else if(hgM==="pseudo"){poly([0,1,2],.18);poly([3,4,5],.15)}
+ else{for(var z=0;z<N;z++)poly([z,(z+1)%N,(z+3)%N],.09)}
+ var cnt=0;hgP.forEach(function(z,i){if(act[i])cnt++;ctx.beginPath();ctx.arc(z[0],z[1],act[i]?7.5:4.5,0,7);ctx.fillStyle=act[i]?col(c,.95):"rgba(138,144,175,.3)";ctx.fill();ctx.beginPath();ctx.arc(z[0],z[1],11.5,0,7);ctx.strokeStyle=act[i]?col(c,.4):"rgba(138,144,175,.18)";ctx.lineWidth=1;ctx.stroke();ctx.fillStyle="rgba(241,244,249,.75)";ctx.font="10px ui-monospace, monospace";ctx.fillText("v"+(i+1),z[0]+14,z[1]+4)});
+ ctx.beginPath();ctx.arc(cx,cy,12,0,7);ctx.fillStyle="#2DD4BF";ctx.fill();
+ var ratio=(cnt/8)*HG[hgM].s;$("#hgSat").textContent=ratio.toFixed(3);
+ $("#hgHud").textContent="ACTIVE VERTICES "+cnt+"/8 · σ_d = "+ratio.toFixed(3)+(cnt<6?" · BUS-FACTOR RISK ELEVATED":"");
+}
+$$("#hgSeg button").forEach(function(b){b.addEventListener("click",function(){hgM=b.getAttribute("data-h");$$("#hgSeg button").forEach(function(x){x.classList.toggle("on",x===b)});$("#hgName").textContent=HG[hgM].n;$("#hgDesc").textContent=HG[hgM].d;$("#hgForm").textContent=HG[hgM].f;drawHG()})});
+$("#hg").addEventListener("click",function(e){var r=e.target.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;hgP.forEach(function(p,i){if(Math.hypot(x-p[0],y-p[1])<18){act[i]=act[i]?0:1;drawHG()}})});
+$("#hgDesc").textContent=HG.directed.d;$("#hgForm").textContent=HG.directed.f;
+
+/* ---------- SDK + HiTL ---------- */
+var SDK={
+python:'from sgrg import JulesHR, models\n\nhr = JulesHR(endpoint="https://hr-os.simonglobalresources.com", svid=True)\n\n# Cold-start regime is explicit, never silent\nmatches = hr.match_internal_talent(\n    collection="sgrg_workforce_v41",\n    requisition=hr.embed_role("Principal_Systems_Architect"),\n    hyperedge_class=models.UNIFORM_K4,\n    regime=models.CohortRegime.COLD_START_HIERARCHICAL,\n    require=models.Filter(must=[\n        models.Field("necessity_N", gte=0.75),\n        models.Field("rosenbaum_gamma_crit", gte=1.50),\n        models.Field("proxy_mutual_info", lt=0.012),\n        models.Field("employee_opt_in", eq=True),\n    ]),\n    limit=5,\n)\n# Returns a PROPOSAL. Execution requires signed HiTL write-back.',
+dax:'-- Power BI measure: suppression is visible, not hidden\nRegrettable_Flight_Shield =\nVAR Necessity   = MIN(AperX[Necessity_N])\nVAR GammaCrit   = MIN(AperX[Rosenbaum_Gamma_Crit])\nVAR ProxyMI     = MAX(AperX[Proxy_Mutual_Information])\nVAR NFloor      = 0.75\nVAR GammaFloor  = 1.50\nRETURN\n    IF(\n        Necessity >= NFloor\n            && GammaCrit >= GammaFloor\n            && ProxyMI < 0.012,\n        CALCULATE(\n            AVERAGE(AperX[Retention_Resilience_WRI]),\n            AperX[Hyperedge_Class] = "UNIFORM_K4",\n            AperX[PII_Sharded] = TRUE()\n        ),\n        BLANK()  -- routed to bonded HRBP, never auto-executed\n    )',
+ts:'import { SgrgHrisBridge } from "@sgrg/hros-bridge";\n\nconst bridge = new SgrgHrisBridge({\n  source: "WORKDAY_HCM",\n  zeroTrustPII: true,\n  euWorksCouncilMode: true,   // ingestion default-off\n});\n\nconst slate = await bridge.evaluateSuccessionBench({\n  targetRoleId: "REQ-2026-8841",\n  stripDemographics: ["name","gender","age","ethnicity","salary_history"],\n  adversarialProxies: ["university_prestige","zip_code","career_gap"],\n  requireUniformObservers: 4,\n  respectEmployeeOptIn: true,\n});\n\n// slate.executable === false until a bonded signature is attached',
+rust:'use sgrg_hros::{Engine, Filter, Range};\n\n#[tokio::main]\nasync fn main() -> Result<(), Box<dyn std::error::Error>> {\n    let e = Engine::connect("spiffe://sgrg/ns/hros").await?;\n\n    let audit = e.audit_pay_equity()\n        .collection("sgrg_workforce_v41")\n        .inside_tee(true)              // Nitro enclave join\n        .require_attestation(true)     // KMS key release gated on PCR\n        .k_anonymity(10)\n        .dp_epsilon_budget(0.15)\n        .filter(Filter::must([\n            ("necessity_N", Range::gte(0.80)),\n            ("unexplained_variance", Range::lt(0.004)),\n        ]))\n        .execute().await?;\n\n    assert_eq!(audit.automated_adverse_actions, 0);\n    Ok(())\n}',
+hitl:'POST /v41/writeback/propose   (Slack / Workday approval card)\n\n{\n  "proposal_id": "PROP-8841-A",\n  "action_type": "RETENTION_SHIELD",\n  "target": { "unit": "division:global_ops", "k_anonymity": 142 },\n  "causal": { "necessity_N": 0.84, "gamma_crit": 1.71, "regime": "cold_start" },\n  "fairness": { "air": 1.00, "proxy_mi": 0.009, "k_observers": 4 },\n  "evidence_tier": 1,\n  "commitment_hash": "0x3C7F..HR02",\n  "nonce": 1042,\n  "expires_in_s": 900,\n  "executable": false,\n  "requires": {\n    "role": "BONDED_HRBP",\n    "signature_scheme": "Ed25519",\n    "signature": null\n  },\n  "automated_adverse_actions_permitted": 0\n}'
+},signed=0;
+function setSdk(l){
+ $$("#sdkTabs .sdk-tab").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-lang")===l)});
+ $("#sdkCode").textContent=SDK[l];
+ $("#hitlCard").style.display=l==="hitl"?"block":"none";
+}
+$$("#sdkTabs .sdk-tab").forEach(function(b){b.addEventListener("click",function(){setSdk(b.getAttribute("data-lang"))})});
+$("#sdkRun").addEventListener("click",function(){$("#sdkResult").innerHTML="✓ 5 governed proposals · AIR 1.00× · proxy MI 0.009 · executable=false ("+(1.1+Math.random()*.4).toFixed(2)+" ms)"});
+function hitlRender(sig,status){
+ var o=JSON.parse(SDK.hitl.substring(SDK.hitl.indexOf("{")));
+ o.requires.signature=sig;o.executable=!!sig&&status==="Approved";
+ $("#hitlJson").textContent=JSON.stringify(o,null,2);
+ $("#hitlStatus").textContent=status;$("#hitlStatus").className="chip "+(status==="Approved"?"t":status==="Escalated"?"c":"g");
+}
+$("#signBtn").addEventListener("click",function(){
+ var sig="ed25519:"+hx(32);signed++;$("#signedCount").textContent=signed;
+ hitlRender(sig,"Approved");
+ $("#hitlGate").className="formula";
+ $("#hitlGate").innerHTML="✓ WRITE-BACK AUTHORISED · signature verified against bonded HRBP key · commitment 0x3C7F..HR02 · nonce 1042 consumed. Automated adverse actions remain <b>0</b>.";
+ DEC.unshift({t:"Signed write-back · retention shield (division rollup)",n:.84,s:"Approved",h:"0x3C7F..HR02",r:"Ed25519 signature "+sig.substring(0,22)+"… verified. Executed against Workday with k=142 aggregate target."});renderDec();
+});
+$("#escalateBtn").addEventListener("click",function(){
+ hitlRender(null,"Escalated");
+ $("#hitlGate").className="formula warn";
+ $("#hitlGate").innerHTML="⏸ WRITE-BACK BLOCKED · escalated to Works Council co-determination queue. No system of record was modified.";
+});
+setSdk("python");hitlRender(null,"AWAITING SIGNATURE");
+
+/* ---------- domains ---------- */
+var DOM=[["01","Organizational digital twin","Living simulation of people, teams, skills, and outcomes.","DIRECTED + COMPLETE","S(t+1)=Φ(S(t),E_directed,ω_HiTL)","profiles 14,200 · mobility matches 312 · drift 0.003","corridor"],
+["02","Talent gravity mapping","Surface informal mentors and collaboration magnets from allow-listed signals.","DIRECTED ATTRIBUTION","G(v)=Σ ω(e)·B_centrality(v)","mentors surfaced 94 · cross-silo bridges +26%","hidden"],
+["03","Workforce weather forecasting","Intercept burnout fronts at pod granularity, 60–90 days out.","POSSIBILISTIC TEMPORAL","P_flight(τ)=Π(load>θ ∩ recovery<δ)","early warning active · rolled up to division","weather"],
+["04","Internal skills marketplace","Opt-in capability adjacency matching for open requisitions.","UNIFORM k-PARTITE","Fit=cos(V_u,V_req)·k4·opt_in(u)","opt-in rate 61% · hidden employees excluded","corridor"],
+["05","Total rewards & pay equity","TEE-joined compensation decomposition against verified contribution.","TEE + UNIFORM GATE","Δ_unexplained < 0.004 across cohorts","parity 99.7% · enclave attested","hidden"],
+["06","Executive CHRO oracle","Counterfactual scenario planning with explicit sensitivity bounds.","COUNTERFACTUAL MC","E[ΔWRI|do(P)] ∈ [N(φ),Π(φ)]","sandbox 90d · Γ tolerance 1.50","reorg"],
+["07","Hidden expert discovery","Elevate unblocking specialists overlooked by title.","PSEUDO DERIVATION","E_latent=Multiplicity(unblock)/band","19 principal contributors surfaced","hidden"],
+["08","Institutional memory engine","Preserve process lineage before transitions and retirements.","DIRECTED PROVENANCE","M_ret=|E_doc ∩ E_crit|/|E_crit|","knowledge capture 91.2%","corridor"],
+["09","Succession & bus-factor shield","Eliminate single-point key-person fragility.","COMPLETE SATURATION","Fragility(v)=ΔOutput/∂Depart(v)","2 critical roles flagged","weather"],
+["10","Human potential index","Learning velocity, adaptability, leadership readiness.","UNIFORM RUBRIC k=4","HPI=α·velocity+β·adapt+γ·coaching","64 lateral slates ready","hidden"],
+["11","CHRO command center","Unified mission control with tiered evidence.","MULTI-DECK TELEMETRY","OEI=Σ w_i·metric_i","7 indices streaming · Tier 1 labelled","corridor"],
+["12","Adverse-impact & audit replay","Bit-identical replay of every selection decision.","BIT-IDENTICAL REPLAY","Replay(e_t) ≡ StateHash(t+Δt)","100% slates replayable · AIR 1.00×","reorg"],
+["13","Safe-Harbor listening","k-anonymous, DP-budgeted employee voice.","SVID + (ε,δ)-DP","ε_q ≤ 1.00 · |pod| ≥ k","participation 89% · leakage 0.00%","weather"],
+["14","Onboarding & knowledge velocity","Accelerate time-to-autonomy via mentor pairing.","DIFFUSION TENSOR","Ramp=Diffusion×MentorGravity","ramp time −28% (Tier 1)","corridor"],
+["15","Cross-silo synergy map","Post-merger collaboration and cultural integration health.","COMPLETE HYPERGRAPH","σ_syn=|E_cross|/C(n,k)","bridges +34% · Γ 1.42","reorg"],
+["16","Autotelic workforce evolution","Self-calibrating L&D aligned with human flourishing.","CLOSED-LOOP AUTOTELIC","θ_{t+1}=argmax N(Retention ∧ Growth)","continuous corridors · opt-in gated","corridor"]],dSel=0;
+function renderDom(){
+ $("#domGrid").innerHTML=DOM.map(function(d,i){return '<div class="dom'+(i===dSel?" on":"")+'" data-dom="'+i+'"><span class="n">'+d[0]+'</span><b>'+esc(d[1])+'</b><span>'+esc(d[2])+'</span></div>'}).join("");
+ $$("#domGrid .dom").forEach(function(el){el.addEventListener("click",function(){
+  dSel=+el.getAttribute("data-dom");var d=DOM[dSel];
+  $("#ddNum").textContent="DOMAIN "+d[0];$("#ddClass").textContent=d[3];$("#ddTitle").textContent=d[1];$("#ddDesc").textContent=d[2];
+  $("#ddForm").textContent="Invariant: "+d[4];$("#ddSig").textContent=d[5];$("#pol").value=d[6];drawOracle();renderDom();
+ })});
+}
+renderDom();
+
+/* ---------- ZK ---------- */
+function zkPublic(tam){return{circuit:"sgrg_fairness_slate_v1.halo2",vk_hash:"0x"+ "7f3a9c21e4b8d056",slate_size:24,public_inputs:{air_threshold:"0.80",air_satisfied:!tam,pii_sharded:true,k_observers:4},commitment:"0x"+hx(16),proof_bytes:384}}
+function zkRender(){$("#zkPublic").textContent=JSON.stringify(zkPublic($("#zkTamper").checked),null,2)}
+$("#zkTamper").addEventListener("change",function(){zkRender();$("#zkLog").textContent="Public input modified. Re-verify to observe rejection.";$("#zkStatus").className="formula gold";$("#zkStatus").textContent="STATUS · public inputs changed"});
+$("#zkVerify").addEventListener("click",function(){
+ var tam=$("#zkTamper").checked,log=$("#zkLog"),steps=[
+  ["dim","[1/5] parsing proof receipt · 384 bytes · Halo2 IPA commitment scheme"],
+  ["dim","[2/5] loading verification key 0x7f3a9c21e4b8d056 · circuit sgrg_fairness_slate_v1"],
+  ["dim","[3/5] binding public inputs to commitment · checking slate_size = 24"],
+  [tam?"bad":"ok",tam?"[4/5] constraint check FAILED · air_satisfied = false violates AIR ≥ 0.80 gate":"[4/5] constraint check passed · AIR ≥ 0.80 ∧ PII_Sharded = TRUE ∧ k = 4"],
+  [tam?"bad":"ok",tam?"[5/5] pairing check REJECTED · proof does not verify against public inputs":"[5/5] pairing check passed · proof verifies · zero witness bytes disclosed"]
+ ],i=0;
+ log.innerHTML="";$("#zkStatus").className="formula";$("#zkStatus").textContent="STATUS · verifying…";
+ var t=setInterval(function(){
+  if(i>=steps.length){clearInterval(t);
+   $("#zkStatus").className="formula"+(tam?" warn":"");
+   $("#zkStatus").innerHTML=tam?"✗ REJECTED · tampered public input fails the circuit constraint. No résumé data was disclosed during rejection.":"✓ VERIFIED · regulator confirmed fairness predicate without receiving résumés, embeddings, observer identities, or rubric weights.";
+   return}
+  var s=steps[i++];log.innerHTML+='<span class="'+s[0]+'">'+esc(s[1])+'</span>\n';log.scrollTop=log.scrollHeight;
+ },420);
+});
+zkRender();
+
+/* ---------- erasure ---------- */
+var SALT=hx(24),EMP="emp_84213";
+function hashLike(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}var o="";for(var j=0;j<8;j++){h=Math.imul(h^j,16777619);o+=("00000000"+(h>>>0).toString(16)).slice(-8)}return o.substring(0,64)}
+function shredReset(){SALT=hx(24);$("#hashBefore").textContent="salt (HSM): "+SALT+"\nH = SHA3-256(salt ‖ "+EMP+")\n  = "+hashLike(SALT+EMP);
+ $("#hashAfter").textContent="— not yet executed —";$("#shredState").className="formula";$("#shredState").textContent="Linkage active. Aggregate proofs valid.";
+ $("#fnCmk").classList.remove("dead");$("#fnHash").classList.remove("dead")}
+$("#shredBtn").addEventListener("click",function(){
+ $("#fnCmk").classList.add("dead");$("#fnHash").classList.add("dead");
+ $("#hashAfter").textContent="salt: DESTROYED (HSM key schedule zeroised)\nH = "+hashLike(SALT+EMP)+"\nlinkage: UNRESOLVABLE\nstatus: orphaned commitment (retained for audit)";
+ $("#shredState").className="formula";
+ $("#shredState").innerHTML="✓ ART. 17 SATISFIED · individual linkage cryptographically destroyed in &lt;1s. Merkle roots and historical AIR computations remain verifiable. The ledger is immutable; the <i>identity</i> is not.";
+});
+$("#shredReset").addEventListener("click",shredReset);shredReset();
+
+/* ---------- TEE ---------- */
+function tee(tam){
+ var log=$("#teeLog"),steps=[
+  ["dim","[1/4] requesting Nitro attestation document · enclave id sgrg-join-prod-04"],
+  ["dim","[2/4] PCR0 (image) = "+(tam?hx(24):"a41f8c02d9e7b3155c6048ae")],
+  ["dim","[3/4] verifying signing chain to AWS Nitro root · checking PCR allow-list"],
+  [tam?"bad":"ok",tam?"[4/4] PCR0 NOT IN ALLOW-LIST · KMS refuses key release · join aborted":"[4/4] attestation accepted · customer KMS releases data key to enclave only"]
+ ],i=0;log.innerHTML="";
+ var t=setInterval(function(){if(i>=steps.length){clearInterval(t);
+  log.innerHTML+=tam?'<span class="bad">RESULT · join denied. Modified enclave image cannot decrypt payroll. Cloud admins and SGRG engineers see ciphertext only.</span>\n':'<span class="ok">RESULT · sealed join authorised. Egress policy permits k≥10 DP-noised aggregates only; row-level output blocked.</span>\n';
+  log.scrollTop=log.scrollHeight;return}
+  var s=steps[i++];log.innerHTML+='<span class="'+s[0]+'">'+esc(s[1])+'</span>\n';log.scrollTop=log.scrollHeight},400);
+}
+$("#teeBtn").addEventListener("click",function(){tee(false)});
+$("#teeTamperBtn").addEventListener("click",function(){tee(true)});
+
+/* ---------- employee twin ---------- */
+$("#empToggle").addEventListener("change",function(){
+ var on=$("#empToggle").checked;$("#empPanel").style.display=on?"block":"none";$("#empOff").style.display=on?"none":"block";
+});
+function empCalc(){
+ var base=.64,add={gov:.14,lead:.09,arch:.11}[$("#empCorridor").value];
+ $("#empKls").textContent=(base+add).toFixed(2);
+}
+$("#empCorridor").addEventListener("change",empCalc);
+$("#empOptIn").addEventListener("change",function(){
+ var on=$("#empOptIn").checked;
+ $("#empMarket").className="formula"+(on?"":" gold");
+ $("#empMarket").innerHTML=on?"Marketplace visibility <b>ON</b>. You appear in recruiter adjacency search. Revoke at any time; cached matches expire within 24h.":"Marketplace visibility <b>OFF</b>. You are excluded from recruiter adjacency search by construction — not by a filter that could be bypassed.";
+});
+empCalc();
+
+/* ---------- circuit breaker ---------- */
+var CB=[{n:"Reference cohort",v:1.00},{n:"Subgroup A",v:.96},{n:"Subgroup B",v:.91},{n:"Subgroup C",v:.88},{n:"Intersectional (k≥10)",v:.84}],tripped=false;
+function cbRender(){
+ $("#cbBars").innerHTML=CB.map(function(r){
+  return '<div class="bar-row"><span>'+esc(r.n)+'</span><div class="bar-tr"><i class="'+(r.v<.8?"bad":"")+'" style="width:'+(r.v*100)+'%"></i><span class="thr"></span></div><span style="text-align:right;color:'+(r.v<.8?"var(--crimson)":"var(--teal)")+'">'+r.v.toFixed(2)+'×</span></div>';
+ }).join("");
+}
+$("#cbInject").addEventListener("click",function(){
+ CB[3].v=.76;tripped=true;cbRender();
+ $("#cbState").className="formula warn";
+ $("#cbState").innerHTML="⛔ BREAKER OPEN · Subgroup C AIR 0.76 &lt; 0.80 · all recommendations FROZEN · CISO + CHRO paged · incident opened";
+ var inc=$("#cbIncident");inc.style.display="block";
+ inc.textContent=JSON.stringify({incident:"GOV-"+hx(6).toUpperCase(),detected:new Date().toISOString(),window:"rolling_30d",trigger:{subgroup:"C",air:0.76,threshold:0.80},action:"RECOMMENDATIONS_FROZEN",notified:["ciso","chro","general_counsel"],works_council_notified:true,remediation_required:["selection_procedure_review","independent_bias_audit","re-attestation"],automated_adverse_actions:0},null,2);
+});
+$("#cbReset").addEventListener("click",function(){
+ if(!tripped){$("#cbState").className="formula";$("#cbState").textContent="BREAKER CLOSED · all subgroups ≥ 0.80 AIR · recommendations flowing";return}
+ CB[3].v=.88;tripped=false;cbRender();
+ $("#cbState").className="formula";
+ $("#cbState").innerHTML="✓ BREAKER CLOSED after re-validation · selection procedure reviewed · re-attestation signed by bonded reviewer · recommendations resumed";
+ $("#cbIncident").style.display="none";
+});
+cbRender();
+
+/* ---------- briefing ---------- */
+$("#bfBtn").addEventListener("click",function(){
+ var org=$("#bfOrg").value.trim()||"Prospective partner",sc=$("#bfScale").value,f=$("#bfFocus").value;
+ var cold=/1,000–5,000/.test(sc);
+ var o=$("#bfOut");o.style.display="block";o.className="formula";
+ o.innerHTML="✓ DILIGENCE MANIFEST · <span class='mono'>SGRG-DIL-"+hx(6).toUpperCase()+"</span><br>Organisation: <b>"+esc(org)+"</b> · scale "+esc(sc)+"<br>Lead question: "+esc(f)+"<br>Causal regime: <b>"+(cold?"cold-start hierarchical priors (Tier 1, prior-dominated)":"rich historical telemetry")+"</b><br>Included: attestation register + residual gaps, DP/k-anonymity spec, metadata allow-list, Annex III file index, "+(cold?"Γ sensitivity appendix, ":"")+"60-day shadow-pilot protocol.<br>Route to research@simonglobalresources.com under mutual NDA.";
+});
+
+/* ---------- resize ---------- */
+window.addEventListener("resize",function(){radarRS();drawHG();drawSpark();drawOracle()});
+setTimeout(function(){drawOracle();drawSpark();drawHG()},80);
+})();
+</script>
+</body>
+</html>
